@@ -1,21 +1,23 @@
 <head>
 <?php $profile =$conn->query("SELECT * FROM profile ");
-$p=$profile->fetch_array(); ?>
+$p=$profile->fetch_array(); 
+
+?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Wijaya Motor">
     <meta name="author" content="Wijaya Motor">
-    <link rel="shortcut icon" href="img/ico.jpg">
-	<link rel="icon" class="img-circle" href="img/ico.jpg">
+    <link rel="shortcut icon" href="<?php echo $host ?>/img/ico.jpg">
+	<link rel="icon" class="img-circle" href="<?php echo $host;?>/img/ico.jpg">
     <title> <?php echo $p['nama']; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo $host ?>/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/icomoon.css">
-    <link href="assets/css/animate-custom.css" rel="stylesheet">
+    <link href="<?php echo $host ?>/assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $host ?>/assets/css/icomoon.css">
+    <link href="<?php echo $host ?>/assets/css/animate-custom.css" rel="stylesheet">
 
 
     
@@ -23,7 +25,7 @@ $p=$profile->fetch_array(); ?>
     <!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>-->
     
     <script src="assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="<?php echo $host ?>/assets/js/modernizr.custom.js"></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

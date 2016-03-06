@@ -7,14 +7,10 @@ $p=$profile->fetch_array();
 <!DOCTYPE html>
 <html lang="en">
   <?php include 'menu/head.php'; ?>
-  
-  
   	<?php include 'menu/h.php'; ?>
 
   <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
-  
-  
-		<!-- ==== HEADERWRAP ==== -->
+	<!-- ==== HEADERWRAP ==== -->
 	    <div id="headerwrap" id="home" name="home">
 			<header class="clearfix">
 	  		 		<h1><span class=""></span></h1>
@@ -31,10 +27,14 @@ $p=$profile->fetch_array();
         <h4 class="modal-title" id="myModalLabel">LOGIN</h4>
       </div>
       <div class="modal-body">
-        <form>
-          <input type="text" class="form-control" placeholder="Username">
-          <input type="password" class="form-control" placeholder="Passowrd">
-          <input type="submit" class="btn btn-primary" value="Login">
+      <!--login-->
+        <form action="cek.php" method="POST">
+          <input type="text" class="form-control" placeholder="Username" name="username">
+          <input type="password" class="form-control" placeholder="Passowrd" name="pass">
+          <input type="submit" class="btn btn-primary" value="Login" name="submit">
+          <?php
+          
+           ?>
         </form>
       </div>
       <div class="modal-footer">
@@ -56,7 +56,7 @@ $p=$profile->fetch_array();
 		  <input type="text" class="form-control" placeholder="ID">
 		  <input type="text" class="form-control" placeholder="Email">
           <input type="password" class="form-control" placeholder="Password">
-		  <td colspan="2" align="center"><font color="#0000FF">Sudah Jadi Anggota? <a href="myLogin">Masuk</a></font></td>
+		  <td colspan="2" align="center"><font color="#0000FF">Sudah Jadi Anggota? <a href="#myLogin">Masuk</a></font></td>
 		  <p></p>
           <input type="submit" class="btn btn-primary" value="Daftar">
         </form>
@@ -261,10 +261,6 @@ $p=$profile->fetch_array();
     <!-- Placed at the end of the document so the pages load faster -->
 		
 
-	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/js/retina.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
-	<script type="text/javascript" src="assets/js/jquery-func.js"></script>
+	
   </body>
 </html>

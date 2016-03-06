@@ -1,3 +1,6 @@
+<?php 
+include 'setting/server.php';
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<link rel="stylesheet" href="">
- <link rel="shortcut icon" href="img/ico.jpg" type="image/x-icon" />
-
-</head>
+ </head>
 <body>
 <div id="navbar-main">
       <!-- Fixed navbar -->
@@ -30,7 +31,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon icon-shield" style="font-size:30px; color:#3498db;"></span>
           </button>
-          <span><a class="navbar-brand hidden-xs hidden-sm" href="index.php"><img src="img/ico1.jpg" alt="" class="img-circle" width="40px" ></span></a>
+          <span><a class="navbar-brand hidden-xs hidden-sm" href="index.php"><img src="<?php echo $host ?>/img/ico1.jpg" alt="" class="img-circle" width="40px" ></span></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -47,6 +48,10 @@
 	  </div>
     </div>
     </div>
-
+<script type="text/javascript" src="<?php echo $host ?>/assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?php echo $host ?>/assets/js/retina.js"></script>
+  <script type="text/javascript" src="<?php echo $host ?>/assets/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="<?php echo $host ?>/assets/js/smoothscroll.js"></script>
+  <script type="text/javascript" src="<?php echo $host ?>/assets/js/jquery-func.js"></script>
 </body>
 </html>

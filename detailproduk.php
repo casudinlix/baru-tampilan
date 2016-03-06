@@ -23,7 +23,7 @@ $stock = $data['stock'];
                     <tr>
                     <br>
                     <br>
-                        <td rowspan="7"><img src="produk/<?php echo $data['gambar']; ?>" /></td>
+                        <td rowspan="7"><img src="<?php echo $host ?>/produk/<?php echo $data['gambar']; ?>" /></td>
                         </tr>
                         <tr>
                         <td colspan="4"><div class="title"><strong style="color:silver;"><h3><?php echo $data['nama_produk']; ?></strong></h3></div></td>
@@ -61,7 +61,8 @@ $stock = $data['stock'];
                         <td></td>
                         <td></td>
                         <td></td>
-						<td><div class="clear"> <a href="cart.php?act=add&amp;barang_id=<?php echo $data['br_id']; ?>&amp;ref=detailproduk.php?kd=<?php echo $data['br_id'];?>" class="btn btn-lg btn-danger">Beli &raquo;</a></div></td>
+						<td><div class="clear"> <a href="user/user.php?id=<?php echo $data['id_produk'];?>" class="btn btn-lg btn-danger">Beli</a></div></td>
+						<td><div class="clear"> <a href="index.php" class="btn btn-primary">Back</a></div></td>
                         </tr>
      
                     </table>
