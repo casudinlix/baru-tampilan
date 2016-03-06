@@ -493,7 +493,7 @@ a:after {
 }
 
 .grid figure img {
-	width: 100%;
+	width: 50%;
 	display: block;
 	position: relative;
 }
@@ -502,7 +502,7 @@ a:after {
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 20px;
+	padding: 10px;
 	color: #fff;
 	background: #3498db;
 }
@@ -515,7 +515,7 @@ a:after {
 	color: #fff;
 	font-weight: 700;
 	text-align: left;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	
 }
 
