@@ -1,6 +1,8 @@
 <?php 
-	include 'setting/server.php';
+include 'setting/server.php';
 
+include $url.'menu/h.php';
+include $url.'menu/head.php';
 	
 ?>
 
@@ -23,19 +25,21 @@ if ($_POST['search'] <> "") {
 				<?php while ($r=$sql->fetch_array()) : ?>
 					<tr>
 						<td class="padding-left" colspan="3">
-							<p><a href="../aplikasi/detail.php?id_product=<?php echo $r[0] ?>" class="href ref"><?php echo $r["name"]; ?>&nbsp;<?php echo $r['type']; ?></a></p>
+							<p><a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>" class="href ref"><?php echo $r["nama_produk"]; ?>&nbsp;<?php echo $r['jenis']; ?></a></p>
 						</td>
 					</tr>
 					<tr>
 						<td class="padding-left" width="128px">
-							<?php if (!empty($r['image'])): ?>				
-								<a href="../aplikasi/detail.php?id_product=<?php echo $r[0] ?>"><img class="scale" src="<?php echo $r['image']; ?>" width="120px" height="120px"></a>
+							<?php if (!empty($r['gambar'])): ?>
+								<a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>">
+								<img src="produk/'<?php echo $r['gambar']; ?>" width="120px" height="120px"></a>
 							<?php else : ?>
-								<a href="../aplikasi/detail.php?id_product=<?php echo $r[0] ?>"><img src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/online_shop/image/product/no-image.jpg' ?>" width="120px" height="120px"></a>
+								<a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>">
+								<img src="produk/" width="120px" height="120px"></a>
 							<?php endif ?>
 						</td>
 						<td style="vertical-align: top; font-size: 14px;" colspan="2" class="padding-right">
-							<?php echo $r["description"]; ?><br/>
+							<?php echo $r["kategori"]; ?><br/>
 						</td>
 					</tr>
 					<tr>
@@ -43,7 +47,7 @@ if ($_POST['search'] <> "") {
 							<?php if ($r['stock'] == 0): ?>
 								<a class="stock">STOK HABIS</a>			
 							<?php endif ?>
-							Rp. <?php echo price($r['price']); ?> &nbsp;
+							Rp. <?php echo $r['harga']; ?> &nbsp;
 						</td>
 						<td class="padding-right" width="80px">
 							<?php if ($r['stock'] == 0): ?>

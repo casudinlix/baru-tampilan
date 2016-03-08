@@ -42,6 +42,7 @@ include 'setting/server.php';
 			<li> <a href="#Katalog" class="smoothScroll"> Katalog</a></li>
 			<li> <a href="#blog" class="smoothScroll"> Komentar</a></li>
 			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
+      <li> <a href="daftar.php" class="smoothScroll"> Daftar</a></li>
 			
 			</div>
 			

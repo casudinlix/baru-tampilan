@@ -1,6 +1,6 @@
 <?php 
 
- include_once '../../setting/server.php';
+
 
 
 function random_char( $panjang ) { 

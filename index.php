@@ -16,7 +16,6 @@ $p=$profile->fetch_array();
 	  		 		<h1><span class=""></span></h1>
 	  		 		<p>Selamat Datang</p>
 	  		 		<p>Di Bengkel Wijaya Motor Bekasi</p>
-					<p><a data-toggle="modal" href="#myRegister" class="btn btn-primary btn-lg">Daftar</a>
 					<a data-toggle="modal" href="#myLogin" class="btn btn-primary btn-lg">Masuk</a>
 					</p> 
 					<div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -42,24 +41,6 @@ $p=$profile->fetch_array();
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="myRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">DAFTAR</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-		  <input type="text" class="form-control" placeholder="Nama Lengkap">
-		  <input type="text" class="form-control" placeholder="ID">
-		  <input type="text" class="form-control" placeholder="Email">
-          <input type="password" class="form-control" placeholder="Password">
-		  <td colspan="2" align="center"><font color="#0000FF">Sudah Jadi Anggota? <a href="#myLogin">Masuk</a></font></td>
-		  <p></p>
-          <input type="submit" class="btn btn-primary" value="Daftar">
-        </form>
       </div>
       <div class="modal-footer">
       </div>
