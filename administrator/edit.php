@@ -9,8 +9,7 @@ include $host.'/menu/head_admin.php';
 include $host.'/menu/tengah_admin.php';
  ?>
 
-<head>
-<title>EDIT Data Barang</title>
+
 </head>
 <body>
 <?php
@@ -18,35 +17,61 @@ $kode =$_GET['id'];
 $sql=$conn->query("SELECT * FROM m_produk WHERE id_produk='$kode'");
 $row = $sql->fetch_array();
 ?>
-<form method="POST" action="aksi/action_edit.php" enctype="multipart/form-data"/>
-<center><table>
-<tr>
-<td colspan="" rowspan="" headers="">Kode</td>
-<td><input type="text" name="kode" value="<?php echo $kode;?>" readonly></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Nama Produk</td>
-<td><input type="text" name="nama" value="<?php echo $row['nama_produk']; ?>"></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Jenis</td>
-<td><select name="jenis">
 
-	<option value="<?php echo $row['jenis'] ?>"><?php echo $row['jenis']; ?></option>
+
+<form class="form-horizontal" method="POST" action="aksi/action_edit.php" enctype="multipart/form-data">
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="kode">Kode</label>  
+  <div class="col-md-4">
+  <input id="kode" name="kode" type="text" placeholder="" class="form-control input-md" value="<?php echo $kode;?>" readonly>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nama">Nama Produk</label>  
+  <div class="col-md-4">
+  <input id="nama" name="nama" type="text" placeholder="" class="form-control input-md" value="<?php echo $row['nama_produk']; ?>">
+    
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Deskripsi</label>
+  <div class="col-md-4">
+    <textarea class="form-control" id="textarea" name="deskripsi"><?php echo $row['deskripsi'] ?></textarea>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="jenis">Jenis</label>
+  <div class="col-md-4">
+    <select id="jenis" name="jenis" class="form-control">
+    <option value="<?php echo $row['jenis']; ?>"><?php echo $row['jenis']; ?></option>
 	<?php
-		$ambil = $conn->query("SELECT * FROM jenis ORDER BY nama_jenis");
+		$ambil = $conn->query("SELECT * FROM m_jenis ORDER BY nama_jenis");
 		if($ambil->num_rows > 0){
-			while ( $data =$ambil->fetch_array()) {
+	while ( $data =$ambil->fetch_array()) {
 				?>
 				<option value="<?php echo $data['nama_jenis']; ?>"><?php echo $data['nama_jenis']; ?></option>';
+
 				<?php
 			}
 		}
 			?>
-	
-</select></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Kategori</td>
-<td><select name="kategori" >
-	<option value="<?php echo $row['kategori']; ?>"><?php echo $row['kategori']; ?></option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="kategori">Kategori</label>
+  <div class="col-md-4">
+    <select id="kategori" name="kategori" class="form-control">
+    <option value="<?php echo $row['kategori']; ?>"><?php echo $row['kategori']; ?></option>
 	<?php
 		$ambil = $conn->query("SELECT * FROM kategori ORDER BY nama_kategori ASC");
 		if($ambil->num_rows > 0){
@@ -57,13 +82,19 @@ $row = $sql->fetch_array();
 			}
 		}
 			?>
-</select></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Merk</td>
-<td><select name="merk">
-	<option value="<?php echo $row['merk']; ?>"><?php echo $row['merk']; ?></option>
+      
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="merk">Merk</label>
+  <div class="col-md-4">
+    <select id="merk" name="merk" class="form-control">
+    <option value="<?php echo $row['merk']; ?>"><?php echo $row['merk']; ?></option>
 	<?php
-		$ambil = $conn->query("SELECT * FROM merk ORDER BY nama_merk ASC");
+		$ambil = $conn->query("SELECT * FROM m_merk ORDER BY nama_merk ASC");
 		if($ambil->num_rows > 0){
 			while ( $data =$ambil->fetch_array()) {?>
 
@@ -72,32 +103,55 @@ $row = $sql->fetch_array();
 			}
 		}
 			?>
-</select></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Deskripsi</td>
-<td><textarea name="deskripsi" value="<?php echo $row['deskripsi']; ?>"><?php echo $row['deskripsi']; ?></textarea></td>
-</tr>
+    </select>
+  </div>
+</div>
 
-<tr><td colspan="" rowspan="" headers="">Berat Barang</td>
-<td><input type="text" name="berat" value="<?php echo $row['berat']; ?>">KG</td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">QTY MIN</td>
-<td><input type="text" name="qtymin" value="<?php echo $row['qty_min']; ?>"></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">QTY MAX</td>
-<td><input type="text" name="qtymax" value="<?php echo $row['qty_max']; ?>"></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Stock</td>
-<td><input type="text" name="stock" value="<?php echo $row['stock']; ?>"></td>
-</tr>
-<tr><td colspan="" rowspan="" headers="">Tanggal Masuk</td>
-<td><input type="teks" name="tgl" value="<?php echo $row['tgl_masuk']; ?>" readonly></td>
-</tr>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="qtymin">Qty Min</label>  
+  <div class="col-md-4">
+  <input id="qtymin" name="qtymin" type="text" placeholder="" class="form-control input-md" value="<?php echo $row['qty_min'] ?>">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="berat">Berat</label>  
+  <div class="col-md-4">
+  <input id="berat" name="berat" type="text" placeholder="" class="form-control input-md" value="<?php echo $row['berat']; ?>">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="qtymax">Qty max</label>  
+  <div class="col-md-4">
+  <input id="qtymax" name="qtymax" type="text" placeholder=" " class="form-control input-md" value="<?php echo $row['qty_max'] ?>">
+  <span class="help-block"> </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="stock">Stock</label>  
+  <div class="col-md-4">
+  <input id="stock" name="stock" type="text" placeholder="" class="form-control input-md" value="<?php echo $row['stock']; ?>">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Update</button>
+  </div>
+</div>
 
 
-
-</table>
-<input type="submit" name="update" value="UPDATE"/>
 </form>
 
 <?php include $host.'/menu/bawah_admin.php'; ?>
