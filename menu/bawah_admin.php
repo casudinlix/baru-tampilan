@@ -11,7 +11,7 @@
 <body>
 	<div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2016 bengkel.com | Design by: <a href="#" style="color:#fff;" target="_blank">Yudis</a>
+                    &copy;  2016 bengkel.com || Design by: Yudis</a>
                 </div>
             </div>
         </div>

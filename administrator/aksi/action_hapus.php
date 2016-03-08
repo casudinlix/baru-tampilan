@@ -12,7 +12,7 @@ if(file_exists("../../produk/".$us['gambar'])){
 $conn->query($query);
 $sql=$conn->query("DELETE FROM stock WHERE id_produk='$id'");
 	echo "<script>window.alert('Data Berhasil Di Hapus');</script>";
-	echo "<script>window.location ='produk.php';</script>";
+	echo "<script>window.location ='../produk.php';</script>";
 }
 
  ?>

@@ -1,10 +1,12 @@
 <?php 
-include_once '../../setting/server.php';
-include_once '../../setting/session.php';
+include_once '../setting/server.php';
+include_once '../setting/session.php';
 date_default_timezone_set('Asia/Jakarta');
 $tanggal= mktime(date("m"),date("d"),date("Y"));
 $tglsekarang = date("Y-m-d", $tanggal);
 $tanggal1 = date('d/m/Y H:i:s');
+include $host.'/menu/head_admin.php';
+include $host.'/menu/tengah_admin.php';
  ?>
 
 <head>
@@ -16,7 +18,7 @@ $kode =$_GET['id'];
 $sql=$conn->query("SELECT * FROM m_produk WHERE id_produk='$kode'");
 $row = $sql->fetch_array();
 ?>
-<form method="POST" action="action_edit.php" enctype="multipart/form-data"/>
+<form method="POST" action="aksi/action_edit.php" enctype="multipart/form-data"/>
 <center><table>
 <tr>
 <td colspan="" rowspan="" headers="">Kode</td>
@@ -97,5 +99,7 @@ $row = $sql->fetch_array();
 </table>
 <input type="submit" name="update" value="UPDATE"/>
 </form>
+
+<?php include $host.'/menu/bawah_admin.php'; ?>
 </body>
 </html>

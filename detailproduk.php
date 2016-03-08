@@ -23,6 +23,12 @@ $stock = $data['stock'];
                     <tr>
                     <br>
                     <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                         <td rowspan="7"><img src="<?php echo $host ?>/produk/<?php echo $data['gambar']; ?>" /></td>
                         </tr>
                         <tr>

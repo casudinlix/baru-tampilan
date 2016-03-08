@@ -1,6 +1,7 @@
 <?php 
 include_once '../setting/server.php';
 include_once '../setting/session.php';
+
 include $host.'/menu/head_admin.php';
 include $host.'/menu/tengah_admin.php';
 include_once 'aksi/fungsi.php';
@@ -24,14 +25,19 @@ include '../halaman.php';
 
 while ($data=$katalog->fetch_array()) { ?>
                       <tr class="success">
+<font color="black">
+                       <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?></b></td>
+					<td colspan="" rowspan="" headers="">
 
-                       <td colspan="" rowspan="" headers=""><?php echo $data['nama_produk'] ?></td>
-					<td colspan="" rowspan="" headers=""><a href="xx" title=""><i  class="on-file">Detail</i></a></td>
-					<td colspan="" rowspan="" headers=""><a href="" title="">edit</a></td>
-					<td colspan="" rowspan="" headers=""><i class="">&nbsp;<a href="xx" title="">Hapus</a></i></td>
+					<a  class="btn btn-warning" href="detail.php?id=<?php echo $data['id_produk'] ?>"><i class="icon-edit">Detail</i></a></td>
+
+
+
+					<td colspan="" rowspan="" headers=""><a class="btn btn-success" href="edit.php?id=<?php echo $data['id_produk']; ?>" title="">Edit</a></td>
+					<td colspan="" rowspan="" headers=""><i class="">&nbsp;<a class="btn btn-danger"href="aksi/action_hapus.php?id=<?php echo $data['id_produk']; ?>" title="">Hapus</a></i></td>
 
                        <tr class="danger">
-                      <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="50px">
+                      <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="65px">
 						<td colspan="" rowspan="" headers=""><b>Stock </b>: &nbsp;<?php echo $data['stock']; ?>
 
 						</td>

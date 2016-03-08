@@ -22,7 +22,7 @@ $tanggal1 = date('d/m/Y H:i:s');
           <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Input Barang</h2>
+                        <h2><font color="black">Input Barang</h2>
                     </div>
                 </div>
                 <!-- /. ROW  -->
@@ -165,7 +165,7 @@ option
 </table>
 <p/>
  <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
-
+ <input type="reset" name="reset" value="Reset" class="btn btn-info">
   </div>
 </form>
 <?php include $host.'/menu/bawah_admin.php'; ?>

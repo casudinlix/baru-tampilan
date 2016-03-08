@@ -5,5 +5,6 @@ if (mysql_errno()) {
 }
 
 $host='http://'.$_SERVER['SERVER_NAME'].'/1';
+$host1='http://'.$_SERVER['PHP_SELF'].'';
 
 ?>

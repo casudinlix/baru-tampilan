@@ -1,5 +1,6 @@
-<?php include '../setting/server.php'; ?>
+<?php include '../setting/server.php';
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
                 </div>
               
                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
+                  <a href="<?php echo $host; ?>/logout.php" >LOGOUT</a> || 
 
                 </span>
             </div>
@@ -36,10 +37,10 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
+<?php  ?>
 
                     <li class="active-link">
-                        <a href="index.html" ><i class="fa fa-desktop "></i>Cek Order <span class="badge"></span></a>
+                        <a href="#" ><i class="fa fa-desktop "></i>Cek Order <span class="badge"></span></a>
                     </li>
 
 
