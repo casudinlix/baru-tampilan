@@ -44,7 +44,7 @@ if(file_exists("../../produk/".$us['gambar'])){
 	if ($hasil) {
 
 	echo "<script>window.alert('Data Berhasil Disimpan');</script>";
-	echo "<script>window.location = 'produk.php';</script>";
+	echo "<script>window.location = '../produk.php';</script>";
 } else {
 	echo "GAGAL".$query."<br>".$conn->error;
 	//echo "<script>window.alert('Data Gagal Disimpan');</script>";

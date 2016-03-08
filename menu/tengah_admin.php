@@ -20,7 +20,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="<?php echo $host; ?>/img/ico1.jpg" height="65px" />
+                        <img src="<?php echo $host; ?>/img/ico1.jpg" height="65px" class="img-circle" />
 
                     </a>
                     
@@ -47,7 +47,7 @@
                         <a href="tambah.php"><i class="fa fa-table "></i>Tambah Barang  <span class="badge"></span></a>
                     </li>
                     <li>
-                        <a href="Transaksi.html"><i class="fa fa-shopping-cart "></i>Transaksi  <span class="badge"></span></a>
+                        <a href="produk.php"><i class="fa fa-shopping-cart "></i>Produk  <span class="badge"></span></a>
                     </li>
 
 
