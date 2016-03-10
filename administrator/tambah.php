@@ -1,8 +1,8 @@
 <?php 
 include_once '../setting/server.php';
-include_once '../setting/session.php';
-include $host.'/menu/head_admin.php';
-include $host.'/menu/tengah_admin.php';
+
+include '../menu/head_admin.php';
+include '../menu/tengah_admin.php';
 include 'aksi/fungsi.php';
 date_default_timezone_set('Asia/Jakarta');
 $tanggal= mktime(date("m"),date("d"),date("Y"));
@@ -14,18 +14,11 @@ $tanggal1 = date('d/m/Y H:i:s');
 
 </head>
 <body>
-<?php
-
-
-?>
 <div id="page-wrapper" >
-          <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
+
+
                         <h2><font color="black">Input Barang</h2>
-                    </div>
-                </div>
-                <!-- /. ROW  -->
+                  
                 <hr />
                 <div class="row">
                 <form method="POST" action="aksi/action_tambah.php" enctype="multipart/form-data">
@@ -36,9 +29,14 @@ $tanggal1 = date('d/m/Y H:i:s');
 						<tr>
 						<td colspan rowspan header>Kode</td>
 						<td>
-  <input type="text" name="kode" placeholder="kode" value="<?php echo $kd;?>" />
+  <input type="text" name="kode" placeholder="kode" value="<?php echo $kd;?>" disabled/>
   </td>
 </tr>
+<tr>
+						<td colspan rowspan header>Gambar</td>
+						<td>
+	<input type="file" name="gambar">
+  </td>
 <p>
 <tr>
 						<td colspan rowspan header>Nama Produk</td>
@@ -147,20 +145,20 @@ option
   </td>
 </tr>
 <p>
-<tr>
-						<td colspan rowspan header>Gambar</td>
-						<td>
-	<input type="file" name="gambar">
-  </td>
+
 </tr>
 <p>
                        <tr>
-<td colspan rowspan header>Harga</td>
+<div>
+	
+
+<td colspan rowspan header><i ></i>Harga</td>
 <td>
   <input type="text" name="harga">
   </td>
 </tr>
 <p>
+</div>
     </div>
 </table>
 <p/>
@@ -168,7 +166,7 @@ option
  <input type="reset" name="reset" value="Reset" class="btn btn-info">
   </div>
 </form>
-<?php include $host.'/menu/bawah_admin.php'; ?>
+
 </body>
 
 </html>

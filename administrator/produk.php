@@ -1,9 +1,7 @@
 <?php 
 include_once '../setting/server.php';
-include_once '../setting/session.php';
-
-include $host.'/menu/head_admin.php';
-include $host.'/menu/tengah_admin.php';
+include '../menu/head_admin.php';
+include '../menu/tengah_admin.php';
 include_once 'aksi/fungsi.php';
 include '../halaman.php';
 ?>
@@ -26,15 +24,18 @@ include '../halaman.php';
 while ($data=$katalog->fetch_array()) { ?>
                       <tr class="success">
 <font color="black">
-                       <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?></b></td>
+                       <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?><br>
+                        <?php echo $data['id_produk']; ?></b>
+                       </td>
+
 					<td colspan="" rowspan="" headers="">
 
-					<a  class="btn btn-warning" href="detail.php?id=<?php echo $data['id_produk'] ?>"><i class="icon-edit">Detail</i></a></td>
+					<a  class="btn btn-warning" href="detail.php?id=<?php echo $data['id_produk']; ?>"><span class="glyphicon glyphicon-check"></span>Detail</i></a></td>
 
 
 
-					<td colspan="" rowspan="" headers=""><a class="btn btn-success" href="edit.php?id=<?php echo $data['id_produk']; ?>" title="">Edit</a></td>
-					<td colspan="" rowspan="" headers=""><i class="">&nbsp;<a class="btn btn-danger"href="aksi/action_hapus.php?id=<?php echo $data['id_produk']; ?>" title="">Hapus</a></i></td>
+					<td><a class="btn btn-success" href="edit.php?id=<?php echo $data['id_produk']; ?>" title=""><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+					<td ><i class="">&nbsp;<a class="btn btn-danger"href="aksi/action_hapus.php?id=<?php echo $data['id_produk']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" title=""><span class="glyphicon glyphicon-remove-sign"></span>Hapus</a></i></td>
 
                        <tr class="danger">
                       <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="65px">
@@ -42,7 +43,8 @@ while ($data=$katalog->fetch_array()) { ?>
 							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
 						</td>
 						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>
-						<td colspan="" rowspan="" headers="">Harga :&nbsp;<?php echo $data['harga']; ?></td>
+						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;<?php echo $data['harga']; ?><br>
+						<i class="glyphicon glyphicon-ok-sign"></i><b>Stock</b>&nbsp;<?php echo $data['stock']; ?></td>
                       </tr>
                       </td>
                        	<?php } ?>
@@ -68,7 +70,7 @@ while ($data=$katalog->fetch_array()) { ?>
 						<?php for($i=1;$i<=$jmlhalaman;$i++): ?>
 							<?php if($i>=($halaman-3) && $i <= ($halaman+3)): ?>
 								<?php if ($i != $halaman): ?>
-									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i&by=$by" ?>"><?php echo $i; ?></a></li>
+									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i" ?>"><?php echo $i; ?></a></li>
 								<?php else: ?>
 									<li class="active"><a><?php echo $i; ?></a></li>
 								<?php endif ?>
@@ -77,7 +79,7 @@ while ($data=$katalog->fetch_array()) { ?>
 
 						<?php if($halaman < $jmlhalaman): ?>
 							<?php $next = $halaman+1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next&by=$by" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php endif ?>

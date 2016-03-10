@@ -1,12 +1,11 @@
 <?php 
 include_once '../setting/server.php';
-include_once '../setting/session.php';
 date_default_timezone_set('Asia/Jakarta');
 $tanggal= mktime(date("m"),date("d"),date("Y"));
 $tglsekarang = date("Y-m-d", $tanggal);
 $tanggal1 = date('d/m/Y H:i:s');
-include $host.'/menu/head_admin.php';
-include $host.'/menu/tengah_admin.php';
+include '../menu/head_admin.php';
+include '../menu/tengah_admin.php';
  ?>
 
 
@@ -154,6 +153,6 @@ $row = $sql->fetch_array();
 
 </form>
 
-<?php include $host.'/menu/bawah_admin.php'; ?>
+<?php include '../menu/bawah_admin.php'; ?>
 </body>
 </html>

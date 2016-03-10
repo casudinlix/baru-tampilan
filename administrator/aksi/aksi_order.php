@@ -27,7 +27,7 @@ if(file_exists("../../user/bukti/".$us['bukti_transfer'])){
 		echo $conn->error;
 	}else{
 		echo "<script>window.alert('Data Berhasil Di Hapus');</script>";
-	echo "<script>window.location = 'cek_order.php';</script>";
+	echo "<script>window.location = '../cek_order.php';</script>";
 	}
 
 }elseif ($act=='approve') {
@@ -52,6 +52,6 @@ $queryOrd = $conn->query("SELECT * FROM order_detail WHERE id_order='$id'");
 }
 $status = $conn->query("UPDATE transaksi SET status='Barang sudah dikirim' WHERE id_order='$id'");
 	echo "<script>window.alert('SELAMAT Transaksi Sudah di proses');</script>";
-	echo "<script>window.location = 'cek_order.php';</script>";
+	echo "<script>window.location = '../cek_order.php';</script>";
 }
 ?>

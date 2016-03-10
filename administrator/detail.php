@@ -63,6 +63,6 @@ $row=$query->fetch_assoc();
 <a class="btn btn-info" href="<?php echo $host; ?>/administrator/produk.php" title="">Kembali</a>
 
  </body>
- <?php include $host.'/menu/bawah_admin.php'; ?>
+ <?php include '../menu/bawah_admin.php'; ?>
  </strong>
  </html>
