@@ -1,5 +1,9 @@
 <head>
-<?php $profile =$conn->query("SELECT * FROM profile ");
+
+<?php
+include 'setting/server.php';
+
+ $profile =$conn->query("SELECT * FROM profile ");
 $p=$profile->fetch_array(); 
 
 ?>

@@ -1,7 +1,8 @@
 <?php
-require '../setting/server.php';
-require'../setting/session.php';
 
+include "../menu/head_admin.php";
+include "../setting/server.php";
+include '../menu/menu_user.php';
 if (isset($_GET['profil'])) {
 	$id = $_GET['id'];
 }
@@ -18,51 +19,38 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
  <head>
  	<meta charset="utf-8">
  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
- 	<title>Selamat Datang  <?php echo $_SESSION['nama'];?></title>
- 	<link rel="stylesheet" href="">
+ 	
+ 	
  </head>
  <body>
+ <div id="page-wrapper" align="center">
  
  <form action="../lib/update_u.php" method="POST" accept-charset="utf-8">
+ <table class="table table-striped">
  	<img src="foto/<?php echo $data['foto'];?>" width="200px" height="200px"/>
- 	<table>
-<tr>
-<td>ID &nbsp;:&nbsp; <?php echo $data['id']; ?> </td>
+ <br>
+  <label>Nama: <?php echo $data['nama']; ?></label><br>
+  <label>Email: <?php echo $data['email']; ?></label><br>
+  <label>Alamat: <?php echo $data['alamat']; ?></label><br>
+  <label>Nomor Telphon: <?php echo $data['tlp']; ?></label><br>
 
-</tr>
 
 
-
-<tr>
-<td>Nama Lengkap Anda :<input type="teks" name="nama" value="<?php echo $data['nama'] ?>" disabled> </td>
-</tr>
-<tr>
-<td>Email :<input type="text" name="email" value="<?php echo $data['email'] ?>" disabled> </td>
-</tr>
-<tr>
-<td>Alamat :<input type="text" name="alamat" value="<?php echo $data['alamat'] ?>" disabled> </td>
-</tr>
-<tr>
-<td>No Telphon :<input type="teks" name="tlp" value="<?php echo $data['tlp'] ?>" disabled>  </td>
-</tr>
-<tr>
-<td>foto :</tr>
  	</table>
-<?php 
- 	echo "<a href=update_profil.php?id=".$data['id']."=".$_SESSION['nama']. ">Edit Data</a>";
- 	?>
- 	||
- 	<?php 
- 	echo "<a href=pass.php?id=".$data['id']."=".$_SESSION['nama']. ">Edit Password</a>";
- 	?>
- 	||
- 	<?php 
- 	echo "<a href=foto.php?id=".$data['id']."=".$_SESSION['nama']. ">Ganti Foto</a>";
- 	?>
  	
+ 	<li class="active-link">
+                        <a href="update_profil.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-cog"></i>Edit Profil<span class="badge"></span></a>
+                    </li>
+                    <li class="active-link">
+                        <a href="foto.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-user "></i>Ganti Foto <span class="badge"></span></a>
+                    </li>
+                    <li class="active-link">
+                        <a href="pass.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-leaf "></i>Ganti Password <span class="badge"></span></a>
+                    </li>
+                   
+
  </form>
- 	<a href="user.php" title="HOME">HOME</a>
- 	<a href="../logout.php" title="Keluar">Logout</a>
+ 	
  </body>
  </html>
 

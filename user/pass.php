@@ -1,35 +1,53 @@
 <?php 
-require '../setting/server.php';
-require'../setting/session.php';
-
+include "../menu/head_admin.php";
+include "../setting/server.php";
+include '../menu/menu_user.php';
  ?>
  <!DOCTYPE html>
  <html>
- <head>
- 	<meta charset="utf-8">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
- 	<title>Update Password</title>
- 	<link rel="stylesheet" href="">
- </head>
- <center>
+
  <body>
- 	<h1>Rubah password <?php echo $_SESSION['nama'];?></h1>
 
-<form action="" method="POST">
-	<table>
-	<tr><td>  <b><?php echo $_SESSION['username']."&nbsp; ID :&nbsp;". $_SESSION['id']; ?> </b></td></tr>
 
-		<tr>
-		<td> Masukan Password lama</td>
-		<td><input type="password" name="password" ></td></tr>
-		<tr>
-		<td> Masukan Password Baru</td>
-		<td><input type="password" name="password1" ></td></tr>
-		<tr>
-		<td> Konfirmasi</td>
-		<td><input type="password" name="password2" ></td></tr>
-		<td><input type="submit" name="submit" value="Simpan"></td>
-	</table>
+<form class="form-horizontal" method="POST" action="">
+<fieldset>
+<div id="page-wrapper" >
+<table class="table table-bordered">
+	
+
+
+<!-- Form Name -->
+<legend>Update Password <?php echo $_SESSION['nama'];?></legend>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Masukan Password lama</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="password0" type="password" placeholder="***" class="form-control input-md">
+    
+  </div>
+</div>
+<input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" placeholder="">
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Masukan Password Baru</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="password1" type="password" placeholder="***" class="form-control input-md">
+     
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput"> Konfirmasi</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="password2" type="password" placeholder="***" class="form-control input-md">
+     
+  </div>
+</div>
+<input type="submit" class="btn btn-success" name="submit" value="Simpan">
+</table>
+</fieldset>
 </form>
  </body>
  </html>
@@ -37,7 +55,7 @@ require'../setting/session.php';
  <?php
 			if(isset($_POST['submit'])=='Simpan'){
 				$id = $_GET['id'];
-				$password 	= md5($_POST['password']);
+				$password 	= md5($_POST['password0']);
 				$password1 	= $_POST['password1'];
 				$password2 	= $_POST['password2'];
 				
@@ -51,7 +69,7 @@ require'../setting/session.php';
 							$update = $conn->query("UPDATE login SET password='$pass' WHERE id='".$_SESSION['id']."'");
 							
 							if($update){
-								header('location:user.php');
+								header('location:profil.php');
 								
 							}else{
 								echo 'Password gagal dirubah';
@@ -66,6 +84,3 @@ require'../setting/session.php';
 			}
 			?>
 
-			<?php 
- 	echo "<a href=profil.php?id=".$_SESSION['id']. ">Profil</a>";
- 	?>

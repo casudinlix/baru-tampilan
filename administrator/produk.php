@@ -15,8 +15,13 @@ include '../halaman.php';
 </head>
 <body>
 <div id="page-wrapper" >
+<?php
+$tampil2="SELECT * FROM m_produk";
+							$hasil2=$conn->query($tampil2);
+							$jmldata=$hasil2->num_rows;
+?>
 <table class="table table-bordered">
-
+Jumlah Barang : <?php echo $jmldata; ?>
 
                         <?php 
 
@@ -24,6 +29,7 @@ include '../halaman.php';
 while ($data=$katalog->fetch_array()) { ?>
                       <tr class="success">
 <font color="black">
+
                        <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?><br>
                         <?php echo $data['id_produk']; ?></b>
                        </td>
@@ -83,6 +89,7 @@ while ($data=$katalog->fetch_array()) { ?>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php endif ?>
+
 					</ul>
 			   	</nav>
 			</td>

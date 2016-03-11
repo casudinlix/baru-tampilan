@@ -1,5 +1,5 @@
 <?php 
-include 'setting/server.php';
+
  ?>
 <!DOCTYPE html>
 <html>

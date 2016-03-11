@@ -42,6 +42,12 @@ $stock = $data['stock'];
                         </tr>
                         <tr>
                         <td></td>
+                        <td size="200"><h3>Deskripsi</h3></td>
+                        <td><h3>:</h3></td>
+                        <td><div><h3><?php echo $data['deskripsi'];?></h3></div></td>
+                        </tr>
+                        <tr>
+                        <td></td>
                         <td><h3>Stock</h3></td>
                         <td><h3>:</h3></td>
                         <td><div><h3><?php if ($data['stock'] >= 1){
@@ -67,7 +73,7 @@ $stock = $data['stock'];
                         <td></td>
                         <td></td>
                         <td></td>
-						<td><div class="clear"> <a href="user/user.php?id=<?php echo $data['id_produk'];?>" class="btn btn-lg btn-danger">Beli</a></div></td>
+						<td><div class="clear"> <a href="user/user.php?id=<?php echo $data['id_produk'];?>" class="btn btn-danger">Beli</a></div></td>
 						<td><div class="clear"> <a href="index.php" class="btn btn-primary">Back</a></div></td>
                         </tr>
      

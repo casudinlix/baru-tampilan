@@ -79,7 +79,6 @@ include 'menu/h.php';
   </div>
 </div>
 
-</fieldset>
 </form>
 
  </body>

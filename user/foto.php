@@ -1,6 +1,7 @@
 <?php 
-require '../setting/server.php';
-require'../setting/session.php';
+include "../menu/head_admin.php";
+include "../setting/server.php";
+include '../menu/menu_user.php';
 
 $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
 	 $hasil = $conn->query($query_pelanggan);
@@ -20,7 +21,7 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
 <body>
 <center>
 <img src="foto/<?php echo $data['foto'];?>" width="200px" height="200px"/>
-<form action="action_foto.php" method="POST"  enctype="multipart/form-data">
+<form action="aksi/action_foto.php" method="POST"  enctype="multipart/form-data">
 
 
 

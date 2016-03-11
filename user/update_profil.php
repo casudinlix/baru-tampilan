@@ -1,8 +1,8 @@
 
 <?php
-require '../setting/server.php';
-require'../setting/session.php';
-
+include "../menu/head_admin.php";
+include "../setting/server.php";
+include '../menu/menu_user.php';
 if (isset($_GET['profil'])) {
 	$id = $_GET['id'];
 }
@@ -17,41 +17,54 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
  <!DOCTYPE html>
  <html>
  <head>
- 	<meta charset="utf-8">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
- 	<title>Selamat Datang  <?php echo $_SESSION['nama'];?></title>
- 	<link rel="stylesheet" href="">
- </head>
- <body>
- <form action="../lib/update_u.php" method="POST" accept-charset="utf-8">
  	
- 	<table>
-<tr>
-<td>ID Anda :<input type="teks" name="id" value="<?php echo $data['id'];?>" disabled></td>
+ <body>
+ <div id="page-wrapper" >
+ 	
+ <form class="form-horizontal" action="../lib/update_u.php" method="POST" accept-charset="utf-8">
+<fieldset>
 
-</tr>
+<!-- Form Name -->
+<legend>Update Profile</legend>
 
+<!-- Text input-->
+<table class="table table-bordered">
+<div class="form-group">
+<input type="hidden" name="id" value="<?php echo $data['id'];?>"></td>
+  <label class="col-md-4 control-label" for="xx">Nama</label>  
+  <div class="col-md-4">
+  <input id="xx" name="nama" type="text" placeholder="" class="form-control input-md" value="<?php echo $data['nama']; ?>" >
+    
+  </div>
+</div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="xx">Email</label>  
+  <div class="col-md-4">
+  <input id="xx" name="email" type="text" placeholder="" class="form-control input-md" value=<?php echo $data['email'] ?>>
+    
+  </div>
+</div>
 
-<tr>
-<td>Nama Lengkap Anda :<input type="teks" name="nama" value=<?php echo $data['nama'] ?> > </td>
-</tr>
-<tr>
-<td>Email :<input type="text" name="email" value=<?php echo $data['email'] ?> > </td>
-</tr>
-<tr>
-<td>Alamat :<input type="text" name="alamat" value=<?php echo $data['alamat'] ?> > </td>
-</tr>
-<tr>
-<td>No Telphon :<input type="teks" name="tlp" value=<?php echo $data['tlp'] ?> >  </td>
-</tr>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Alamat</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="alamat" name="alamat"><?php echo $data['alamat']; ?></textarea>
+  </div>
+</div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="xx">Nomor Telphon</label>  
+  <div class="col-md-4">
+  <input id="xx" name="tlp" type="text" placeholder="" class="form-control input-md" value=<?php echo $data['tlp'] ?>>
+    
+  </div>
+</div>
+<input type="submit" class="btn btn-primary" name="submit" value="Update">
 
-</tr>
- 	</table>
-<input type="submit" name="update" value="Update">
- </form>
- 	<a href="user.php" title="HOME">HOME</a>
+</fieldset>
+</form>
+
  </body>
  </html>
 

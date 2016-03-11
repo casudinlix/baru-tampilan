@@ -20,38 +20,37 @@ $tanggal1 = date('d/m/Y H:i:s');
                         <h2><font color="black">Input Barang</h2>
                   
                 <hr />
+
                 <div class="row">
-                <form method="POST" action="aksi/action_tambah.php" enctype="multipart/form-data">
-                	
-                
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-					<table class="table-center">
-						<tr>
-						<td colspan rowspan header>Kode</td>
-						<td>
-  <input type="text" name="kode" placeholder="kode" value="<?php echo $kd;?>" disabled/>
-  </td>
-</tr>
-<tr>
-						<td colspan rowspan header>Gambar</td>
-						<td>
-	<input type="file" name="gambar">
-  </td>
-<p>
-<tr>
-						<td colspan rowspan header>Nama Produk</td>
-						<td>
-  <input type="text" name="nama" placeholder="Nama Barang" />
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Jenis</td>
-						<td>
-  <select name="jenis" >
-<option value="">---</option>}
-option
-  <?php
+                <form method="POST" class="form-horizontal" action="aksi/action_tambah.php" enctype="multipart/form-data">
+                	<div class="form-group">
+  <label class="col-md-4 control-label" for="text">Kode</label>  
+  <div class="col-md-4">
+  <input id="text" name="username" type="text" class="form-control input-md" value="<?php echo $kd;?>" readonly>
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="filebutton">Gambar</label>
+  <div class="col-md-4">
+    <input id="gambar" name="gambar" class="input-file " type="file">
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nama">Nama</label>  
+  <div class="col-md-4">
+  <input id="text" name="nama" type="text" class="form-control input-md"   placeholder="Nama Barang" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="jenis">Jenis</label>
+  <div class="col-md-4">
+    <select id="jenis" name="jenis" class="form-control">
+      <option value="">Pilih</option>
+      <?php
 		$ambil = $conn->query("SELECT * FROM m_jenis ORDER BY nama_jenis ASC LIMIT 2");
 		if($ambil->num_rows > 0){
 			while ( $data =$ambil->fetch_array()) {
@@ -61,17 +60,17 @@ option
 			}
 		}
 			?>
-	
-  </select>
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Kategori</td>
-						<td>
-  <select name="kategori" >
-  <option value="">---</option>
-	<?php
+      
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="kategori">Kategori</label>
+  <div class="col-md-4">
+    <select id="kategori" name="kategori" class="form-control">
+      <option value="">Pilih</option>
+      <?php
 		$ambil = $conn->query("SELECT * FROM kategori ORDER BY nama_kategori ASC");
 		if($ambil->num_rows > 0){
 			while ( $data =$ambil->fetch_array()) {?>
@@ -81,16 +80,16 @@ option
 			}
 		}
 			?>
-  </select>
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Merk</td>
-						<td>
-  <select name="merk" >
-  <option value="">---</option>
-	<?php
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="merk">Merk</label>
+  <div class="col-md-4">
+    <select id="merk" name="merk" class="form-control">
+      <option value="1">Pilih</option>
+      <?php
 		$ambil = $conn->query("SELECT * FROM m_merk ORDER BY nama_merk ASC");
 		if($ambil->num_rows > 0){
 			while ( $data =$ambil->fetch_array()) {?>
@@ -100,71 +99,76 @@ option
 			}
 		}
 			?>
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Deskripsi</td>
-						<td>
-  <textarea name="deskripsi" placeholder="Deskripsi" ></textarea>
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Berat Barang</td>
-						<td>
-  <input type="text" name="berat" placeholder="> 1Kg" />
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Qty Minimum</td>
-						<td>
-  <input type="text" name="qtymin" />
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Qty Max</td>
-						<td>
-  <input type="text" name="qtymax">
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Stock</td>
-						<td>
-  <input type="text" name="stock">
-  </td>
-</tr>
-<p>
-<tr>
-						<td colspan rowspan header>Tanggal Masuk</td>
-						<td>
-  <input type="date" name="tgl" value="<?php echo $tglsekarang; ?>" readonly>
-  </td>
-</tr>
-<p>
-
-</tr>
-<p>
-                       <tr>
-<div>
-	
-
-<td colspan rowspan header><i ></i>Harga</td>
-<td>
-  <input type="text" name="harga">
-  </td>
-</tr>
-<p>
-</div>
-    </div>
-</table>
-<p/>
- <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
- <input type="reset" name="reset" value="Reset" class="btn btn-info">
+      
+    </select>
   </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="deskripsi">Deskripsi</label>
+  <div class="col-md-4">
+    <textarea class="form-control" id="deskripsi" name="deskripsi" required=""></textarea>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">Berat Barang</label>  
+  <div class="col-md-4">
+  <input id="text" name="berat" type="text" class="form-control input-md"   placeholder="KG" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">QTY Minimum</label>  
+  <div class="col-md-4">
+  <input id="text" name="qtymin" type="text" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">QTY Max</label>  
+  <div class="col-md-4">
+  <input id="text" name="qtymax" type="text" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">Stock</label>  
+  <div class="col-md-4">
+  <input id="text" name="stock" type="text" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">Tanggal Masuk</label>  
+  <div class="col-md-4">
+  <input id="text" name="tgl" type="date" class="form-control input-md" value="<?php echo $tglsekarang;?>" readonly>
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="text">Harga</label>  
+  <div class="col-md-4">
+  <input id="text" name="harga" type="text" class="form-control input-md" placeholder="Rp" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-4" align="center">
+    <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+ <input type="reset" name="reset" value="Reset" class="btn btn-info">
+ 
+  </div>
+</div>
+
 </form>
 
 </body>

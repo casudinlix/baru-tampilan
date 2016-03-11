@@ -44,7 +44,7 @@ $queryOrd = $conn->query("SELECT * FROM order_detail WHERE id_order='$id'");
 		$dataSale = $selectSale->fetch_array();
 
 		$updateSale = $conn->query("UPDATE stock SET terjual='$dataSale[terjual]'+'$dataTrs[qty]' WHERE id_produk='$dataPro[id_produk]'");
-		$upstock = $conn->query("UPDATE stock SET stock_akhir='$dataSale[stock_akhir]'-'$dataTrs[qty]' WHERE id_produk='$dataPro[id_produk]'");
+		$upstock = $conn->query("UPDATE stock SET stock='$dataSale[stock]'-'$dataTrs[qty]' WHERE id_produk='$dataPro[id_produk]'");
 
 
 

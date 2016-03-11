@@ -26,7 +26,7 @@ if (isset($_POST['submit'])=='login') {
 if (isset($_SESSION['confirm'])){
 
 	if ($_SESSION['confirm']=="N") {
-		die("Akun Anda Belum AKTIF<a href='login.php' >LOGIN</a>");
+		die("Akun Anda Belum AKTIF<a href='index.php' >LOGIN</a>");
 
 	}
 }

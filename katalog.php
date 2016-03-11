@@ -37,7 +37,7 @@
         		<div class="span4">
           			<div class="icons-box">
                         <div class="title"><h3><?php echo $data['nama_produk']; ?></h3></div>
-                        <img src="produk/<?php echo $data['gambar']; ?>" />
+                        <img src="produk/<?php echo $data['gambar']; ?>" class="img-circle" />
 						<div><h3>Rp.<?php echo $harga;?></h3></div>
 					<!--	<p>
 						
@@ -64,7 +64,7 @@
 
 						<?php if($halaman > 1): ?>
 							<?php $previous = $halaman-1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php endif ?>
@@ -72,7 +72,7 @@
 						<?php for($i=1;$i<=$jmlhalaman;$i++): ?>
 							<?php if($i>=($halaman-3) && $i <= ($halaman+3)): ?>
 								<?php if ($i != $halaman): ?>
-									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i&by=$by" ?>"><?php echo $i; ?></a></li>
+									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i" ?>"><?php echo $i; ?></a></li>
 								<?php else: ?>
 									<li class="active"><a><?php echo $i; ?></a></li>
 								<?php endif ?>
@@ -81,7 +81,7 @@
 
 						<?php if($halaman < $jmlhalaman): ?>
 							<?php $next = $halaman+1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next&by=$by" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php endif ?>

@@ -19,7 +19,7 @@ $id =$_GET['id'];
 	$query = "UPDATE m_produk SET nama_produk='$nama', jenis='$jenis', kategori='$kategori', merk='$merk', deskripsi='$deskripsi' , berat='$berat' , qty_min='$qtymin', qty_max='$qtymax',stock='$stock' WHERE id_produk='$kode'";
 	$hasil = $conn->query($query);
 	
-	$query2=$conn->query("UPDATE stock SET  stock_akhir='$stock', edit_stock='$stock'-'$hasil[stock]' WHERE id_produk='$kode'");
+	$query2=$conn->query("UPDATE stock SET  stock='$stock' WHERE id_produk='$kode'");
 if ($hasil) {
 
 	echo "<script>window.alert('Data Berhasil Disimpan');</script>";
