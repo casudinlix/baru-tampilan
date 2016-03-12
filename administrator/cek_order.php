@@ -4,7 +4,8 @@ include_once '../setting/server.php';
 include '../menu/head_admin.php';
 include '../menu/tengah_admin.php';
 include 'jumlah_order.php';
-
+$data = $conn->query("SELECT * FROM order_detail");
+$row12 =$data->num_rows;
 $queryOrd = $conn->query("SELECT * FROM transaksi ");
 
 	//echo "<script>window.alert('Tidak Ada Order Masuk Hari Ini ');</script>";
@@ -59,14 +60,15 @@ $no =0;
 
                             <td align="center">
                               
-                              <a class="btn btn-danger" href="aksi_order.php?act=hapus&amp;id=<?php echo $row['id_order'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"title="">Hapus<em class="glyphicon glyphicon-trash"></em></a>
+                              <a class="btn btn-danger" href="aksi/aksi_order.php?act=hapus&amp;id=<?php echo $row['id_order'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"title="">Hapus<em class="glyphicon glyphicon-trash"></em></a>
                             </td>
+
                             <td class="hidden-xs"><?php echo $no; ?></td>
                             <td><a href="order.php?id=<?php echo $row['id_order']; ?>"><?php echo $row['id_order']; ?></a></td>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['tanggal']; ?></td>
 
-                            <td><?php echo $row['status']; ?></td>
+                            <td class="warning"><?php echo $row['status']; ?></td>
                           </tr>
                         </tbody>
                         <?php
@@ -83,13 +85,13 @@ $no =0;
 							$jmldata=$hasil2->num_rows;
 							$jmlhalaman=ceil($jmldata/$batas);
 						?>
-                  <div class="col col-xs-4"><font color="black">Jumlah Order <?php echo $jmldata; ?>
+                  <div class="col col-xs-4"><font color="black">Jumlah Order :&nbsp;<?php echo $row12; ?>
                   </div>
                   <div class="col col-xs-8">
                     <ul class="pagination hidden-xs pull-right">
                       <?php if($halaman > 1): ?>
 							<?php $previous = $halaman-1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php endif ?>
@@ -97,7 +99,7 @@ $no =0;
 						<?php for($i=1;$i<=$jmlhalaman;$i++): ?>
 							<?php if($i>=($halaman-3) && $i <= ($halaman+3)): ?>
 								<?php if ($i != $halaman): ?>
-									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i&by=$by" ?>"><?php echo $i; ?></a></li>
+									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i" ?>"><?php echo $i; ?></a></li>
 								<?php else: ?>
 									<li class="active"><a><?php echo $i; ?></a></li>
 								<?php endif ?>

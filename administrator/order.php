@@ -84,7 +84,24 @@ $dataOrd =$queryOrd->fetch_array();
 			<td align="center" rowspan="7" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
 		</tr>
 	</table>
-<td><i class="btn btn-warning"><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
+	<?php 
+$query = $conn->query("SELECT * FROM transaksi WHERE id_order='$id'");
+$data  = $query->fetch_array();
+$status = $data['status'];
+
+	if ($data['status']=="Belum Dibayar"){
+echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
+
+ }else{
+?>
+<td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
+<td>
+<i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>">Print</a></i></td>
+<?php
+	}
+	
+	?>
+
 </div>
 		</tbody>
 </div>
