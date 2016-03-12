@@ -1,5 +1,6 @@
 <?php
 // memulai session
+error_reporting(0);
 include 'setting/server.php';
 session_start();
 

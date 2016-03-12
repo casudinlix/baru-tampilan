@@ -74,9 +74,11 @@ if(isset($_POST['edit'])=='edit'){
         </form>
     </td>
   </tr>
-  <tr>
-    <td><?php include('footer.php'); ?></td>
-  </tr>
+  
+    
+  
 </table>
+
+<?php include "../menu/bawah_admin.php"; ?>
 </body>
 </html>

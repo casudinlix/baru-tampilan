@@ -74,7 +74,7 @@ $idt = $_SESSION['email'];
 
 Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class="image-circle" width="70x"><br></td>
  <?php echo $_SESSION['nama']; ?>
- [ <a href="<?php echo $host; ?>/logout.php" >LOGOUT</a> ]
+ [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')">LOGOUT</a> ]
  <li class="active-link">
                         <a href="user.php" ><i class="glyphicon glyphicon-home "></i>Home <span class="badge"></span></a>
 
@@ -124,6 +124,22 @@ Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class
         </div>
     
       
+          
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="<?php echo $host; ?>/assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="<?php echo $host; ?>/assets/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="<?php echo $host; ?>/assets/js/custom.js"></script>
+    
+   
+    </div>
+    
+    </div>
+    
     
 </body>
 </html>

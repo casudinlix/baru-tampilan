@@ -44,12 +44,23 @@ while ($data=$katalog->fetch_array()) { ?>
 
 
 
-					<td><a class="btn btn-success" href="aksi.php?act=add&amp;id=<?php echo $data['id_produk'];?>" title="">Beli</a></td>
+					<td>
+<?php if ($data['stock'] >= 1){
+	                           echo "<a class='btn btn-success' href='aksi.php?act=add&amp;id=$data[id_produk]' >Beli</a></td>";	
+                                } else {
+	                           echo '<strong style="color: red;">Stock Habis</strong>';	
+                                }; ?></h3></div></td>
+
 					<td colspan="" rowspan="" headers=""></td>
 					<tr class="danger">
                       <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="70px">
-						<td colspan="" rowspan="" headers=""><b>Stock </b>: &nbsp;<?php echo $data['stock']; ?>
-							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
+						<td colspan="" rowspan="" headers="">
+						<?php if ($data['stock'] >= 1){
+	                           echo '<strong style="color: blue;">Stock Tersedia</strong>';	
+                                } else {
+	                           echo '<strong style="color: red;">Stock Habis</strong>';	
+                                }; ?></h3></div></td>
+
 						</td>
 						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>
 						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;<?php echo $data['harga']; ?>

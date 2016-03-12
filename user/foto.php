@@ -29,7 +29,7 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
 <input name="id" type="hidden" value="<?php echo $_SESSION['id']; ?>">
 <input type="file" name="foto"></td><br/>
 
-<td><input type="submit" name="submit" value="Update"></td>
+<td><input type="submit" class="btn btn-warning" name="submit" value="Update"></td>
 
 	</form>
 	</center>

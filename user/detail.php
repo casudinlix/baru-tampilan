@@ -42,7 +42,7 @@ $row=$query->fetch_assoc();
                         <td><h3><font color="black">Stock</h3></td>
                         <td><h3>:</h3></td>
                         <td><div><h3><?php if ($row['stock'] >= 1){
-	                           echo '<strong style="color: blue;">'.$row['stock'].'</strong>';	
+	                           echo '<strong style="color: blue;">Stock Tersedia</strong>';	
                                 } else {
 	                           echo '<strong style="color: red;">Stock Habis</strong>';	
                                 }; ?></h3></div></td>

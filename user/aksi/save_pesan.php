@@ -28,7 +28,7 @@ foreach($qty as $key => $value){
 	die($conn->error);
 }
 }
-
+$deleteOt = $conn->query("DELETE FROM order_user WHERE username='$idt'");
 if ($hasil) {
 	header("Location:../transaksi_detail.php?id_order=$idOrd");
 }
