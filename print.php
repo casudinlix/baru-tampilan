@@ -107,6 +107,7 @@ $dataOrd = $queryOrd->fetch_array();
 		<th width="95px">Jumlah</th>
 		<th width="190px">Berat</th>
 		<th width="190px">Sub Total</th>
+		
 	</tr>
 	<?php
 		$no = 1;
@@ -131,16 +132,19 @@ $dataOrd = $queryOrd->fetch_array();
 			<td align="center">Rp. <?php echo $subtotal+$biaya; ?></td>
 			
 		</tr>
-		
-		<tr style="height:50px;">
-			<td colspan="5" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
-			<td align="center" rowspan="6" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
-		</tr>
 		<?php 
 			$no++;
 		 	}
 		?>
-</table>
+		
+		<tr style="height:50px;">
+			<td colspan="5" align="right"><b style="margin-right: 3px;"><h3>Total Biaya</h3></b></td>
+			<td align="center" rowspan="6" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
+
+		</tr>
+		</table>
+
+
 <div style="padding:10px 0 0 23px;">
 	<input type="button" class="btn btn-success" onclick="window.print();" value="Cetak Bukti Transaksi" >
 	

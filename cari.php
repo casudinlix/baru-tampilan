@@ -1,8 +1,8 @@
 <?php 
 include 'setting/server.php';
 
-include $url.'menu/h.php';
-include $url.'menu/head.php';
+include 'menu/h.php';
+include 'menu/head.php';
 	
 ?>
 

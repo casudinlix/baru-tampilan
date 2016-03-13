@@ -1,5 +1,5 @@
 <?php
-
+include '../setting/server.php';
 $batas = 5;
 // $halaman = $_GET['halaman'];
 if(isset($_GET['halaman'])) {
@@ -25,16 +25,8 @@ else{
 $order = "id_order";
 
 $pos = "asc";
-if ($by == "az") {
-	$order = "id_order";
-	
-	$pos = "asc";
-} elseif ($by == "za") {
-	$order = "id_order";
-	
-	$pos = "desc";
-}
-$order = $conn->query("SELECT * FROM transaksi  ORDER BY $order, $pos,$pos LIMIT $posisi,$batas");
+
+$dataOrd = $conn->query("SELECT * FROM transaksi  ORDER BY $order $pos LIMIT $posisi,$batas");
 
 
 ?>

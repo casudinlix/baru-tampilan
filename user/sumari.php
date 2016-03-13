@@ -98,6 +98,6 @@ $dataOrd =$queryOrd->fetch_array();
 		</tr>
 	</table>
 <td><a href="transaksi_detail.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-check"></i>Benar</a></td>
-<td><a href="transaksi_detail.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-print"></i>Print</a></td>
+
 </div>
 

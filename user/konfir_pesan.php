@@ -8,11 +8,7 @@ $nama = $_SESSION['nama'];
 $sql = $conn->query("SELECT * FROM login WHERE nama='$nama' ");
 $data =$sql->fetch_assoc();
 
-$query = $conn->query("SELECT username FROM order_user WHERE username='$idt'");
-if ($numRow=$query->num_rows == 0) {
-	echo "<script>window.alert('Anda Belum Melakukan Transaksi);</script>";
-	echo "<script>window.location = 'user.php';</script>";
-}
+
 $query = $conn->query("SELECT * FROM login WHERE nama='$nama'");
 $datacus = $query->fetch_array();
 

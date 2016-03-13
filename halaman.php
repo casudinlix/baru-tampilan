@@ -1,6 +1,6 @@
 <?php
 include 'setting/server.php';
-$batas = 4;
+$batas = 10;
 // $halaman = $_GET['halaman'];
 if(isset($_GET['halaman'])) {
 	$halaman = $_GET['halaman'];

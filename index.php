@@ -126,12 +126,7 @@ $p=$profile->fetch_array();
 		
 		
 		<!-- ==== SECTION DIVIDER3 -->
-		<section class="section-divider textdivider divider3">
-			<div class="container">
-				<h1>KEPUASAN PELANGGAN MENJADI HAK PATEN UNTUK KAMI</h1>
-				<hr>
-			</div><!-- container -->
-		</section><!-- section -->
+		<!-- section -->
 		
 		<!-- ==== PORTFOLIO ==== -->
 		<?php include "katalog.php"; ?>

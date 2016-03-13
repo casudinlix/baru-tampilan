@@ -6,12 +6,10 @@ include '../menu/tengah_admin.php';
 include 'jumlah_order.php';
 $data = $conn->query("SELECT * FROM order_detail");
 $row12 =$data->num_rows;
-$queryOrd = $conn->query("SELECT * FROM transaksi ");
+//$queryOrd = $conn->query("SELECT * FROM transaksi ");
 
 	//echo "<script>window.alert('Tidak Ada Order Masuk Hari Ini ');</script>";
 	//echo "<script>window.location = '../administrator.php';</script>";
-	
-$no =0;
 
 
 	
@@ -41,7 +39,7 @@ $no =0;
                   <thead class="warning">
                     <tr>
                         <th><em class="glyphicon glyphicon-cog"></em></th>
-                        <th class="hidden-xs">Nomor</th>
+                        
                         <th colspan="" rowspan="" headers="" scope="">Nomor Order</th>
                         <th>Name</th>
                         <th>Tanggal</th>
@@ -51,9 +49,9 @@ $no =0;
                     </tr> 
                   </thead>
                   <tbody>
-                  <?php while ( $row = $queryOrd->fetch_array()) {
+                  <?php while ( $row = $dataOrd->fetch_array()) {
 
-				$no++;
+				
 			?>
                           <tr class="info">
 
@@ -63,7 +61,7 @@ $no =0;
                               <a class="btn btn-danger" href="aksi/aksi_order.php?act=hapus&amp;id=<?php echo $row['id_order'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"title="">Hapus<em class="glyphicon glyphicon-trash"></em></a>
                             </td>
 
-                            <td class="hidden-xs"><?php echo $no; ?></td>
+                            
                             <td><a href="order.php?id=<?php echo $row['id_order']; ?>"><?php echo $row['id_order']; ?></a></td>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['tanggal']; ?></td>

@@ -98,8 +98,9 @@ $dataOrd =$queryOrd->fetch_array();
 			<td colspan="6" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
 			<td align="center" rowspan="3" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
 		</tr>
-	</table>
 
+	</table>
+<td><a href="print.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-print"></i>Klik Untuk Mencetak Struk</a></td><br>
 	<?php
 	$query = $conn->query("SELECT * FROM transaksi WHERE id_order='$id'");
 $data  = $query->fetch_array();

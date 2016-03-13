@@ -78,11 +78,17 @@ $dataOrd =$queryOrd->fetch_array();
 			<td colspan="" rowspan="" headers=""><a href="../user/bukti/<?php echo $dataTrs['bukti_transfer']; ?>"  target='_blank' title="">Attacment</td></a>
 			<td colspan="" rowspan="" headers=""><?php echo $dataTrs['status']; ?></td>
 		</tr>
+		<?php
+			$no++;
+		 	}
+		?>
 		
 		<tr style="height:50px;">
 			<td colspan="7" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
 			<td align="center" rowspan="7" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
+			
 		</tr>
+	
 	</table>
 	<?php 
 $query = $conn->query("SELECT * FROM transaksi WHERE id_order='$id'");
@@ -93,11 +99,18 @@ $status = $data['status'];
 echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
 
  }else{
+ 	if ($data['status']=="Barang sudah dikirim") {
+ 		echo '<strong style="color: red;">Sudah Dibayar</strong>';
+
+ 	}else{
 ?>
+
 <td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
 <td>
 <i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>">Print</a></i></td>
+
 <?php
+}
 	}
 	
 	?>
@@ -110,11 +123,10 @@ echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
 				<nav>
 					<ul class="pagination">
 
-<?php
-			$no++;
-		 	}
-		?>
-</table>
+					</ul>
+					</nav>
+					</td></tr></td></tbody></b></font></tr></table></div>
+
 <?php include $host.'/menu/bawah_admin.php'; ?>
 </body>
 </html>

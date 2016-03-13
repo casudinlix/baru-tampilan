@@ -67,41 +67,37 @@ $idt = $_SESSION['email'];
             </div>
         </div>
         <!-- /. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation" align="center">
+        <nav class="navbar-default navbar-side" role="navigation" align="left">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
 Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class="image-circle" width="70x"><br></td>
  <?php echo $_SESSION['nama']; ?>
- [ <a href="<?php echo $host; ?>/logout.php" >LOGOUT</a> ]
+ [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off"></i></a> ]
                     <li class="active-link">
-                        <a href="cek_order.php" ><i class="fa fa-desktop "></i>Cek Order <span class="badge"></span></a>
+                        <a href="cek_order.php" ><i class="glyphicon glyphicon-ok-circle"></i>Cek Order <span class="badge"></span></a>
                     </li>
 
 
                     <li>
-                        <a href="tambah.php"><i class="fa fa-table "></i>Tambah Barang  <span class="badge"></span></a>
+                        <a href="tambah.php"><i class="glyphicon glyphicon-plus-sign"></i>Tambah Barang  <span class="badge"></span></a>
                     </li>
                     <li>
-                        <a href="produk.php"><i class="fa fa-shopping-cart "></i>Produk  <span class="badge"></span></a>
-                    </li>
-
-
-                    <li>
-                        <a href="Admin.html"><i class="fa fa-key "></i>Admin <span class="badge"></span></a>
-                    </li>
-                    <li>
-                        <a href="MailBox.html"><i class="fa fa-envelope-o"></i>Mail Box <span class="badge"></span></a>
+                        <a href="produk.php"><i class="glyphicon glyphicon-th"></i>Produk  <span class="badge"></span></a>
                     </li>
 
+
                     <li>
-                        <a href="RegisterUser.html"><i class="fa fa-user "></i>Register Users <span class="badge"></span></a>
+                        <a href="Admin.html"><i class="glyphicon glyphicon-eye-open"></i>Admin <span class="badge"></span></a>
                     </li>
                     <li>
-                        <a href="AllDoc.html"><i class="fa fa-clipboard "></i>All Document <span class="badge"></span></a>
+                        <a href="laporan.php"><i class="glyphicon glyphicon-book"></i>Laporan <span class="badge"></span></a>
+                    </li>
+                    <li>
+                        <a href="daftar_user.php"><i class="glyphicon glyphicon-user"></i>Register Users <span class="badge"></span></a>
                     </li>
                      <li>
-                        <a href="Setting.html"><i class="fa fa-gear "></i>Setting <span class="badge"></span></a>
+                        <a href="profil.php"><i class="glyphicon glyphicon-cog"></i>Setting <span class="badge"></span></a>
                     </li>
                     
                 </ul>
