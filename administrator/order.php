@@ -30,7 +30,7 @@ $dataOrd =$queryOrd->fetch_array();
                       <tr class="success">
 <font color="black">
 
-<td colspan="7" rowspan="" headers=""></td>
+<td colspan="8" rowspan="" headers=""></td>
 <b>Data pelanggan <pre><?php echo $data['username']; ?></b>
 <br><b>Nomor Order :<?php echo $id = $_GET['id']; ?>
 						<td></td>
@@ -46,6 +46,7 @@ $dataOrd =$queryOrd->fetch_array();
 			<th width="190px">Harga Satuan</th>
 			<th width="95px">Jumlah</th>
 			<th width="95px">Total Berat</th>
+			<th width="95px">Biaya Kirim</th>
 			<th width="190px">Sub Total</th>
 			<th width="190px">Bukti</th>
 			<th width="190px">Status</th>
@@ -70,10 +71,10 @@ $dataOrd =$queryOrd->fetch_array();
 				
 			<td align="center"><?php echo $no; ?></td>
 			<td><?php echo $dataPro['nama_produk']; ?></td>
-			<td align="center">Rp. <?php echo $dataPro['harga']; ?></td>
+			<td align="center">Rp. <?php echo number_format($dataPro['harga']); ?></td>
 			<td align="center"><?php echo $dataTrs['qty']; ?></td>
-			<td align="center"><?php echo $dataTrs['biaya'] ?>/Kg</td>
-
+			<td align="center"><?php echo $dataPro['berat'] ?>/Kg</td>
+			<td align="center">Rp,-<?php echo number_format($dataTrs['biaya']) ?>/Kg</td>
 			<td align="center">Rp. <?php echo $subtotal+$biaya; ?></td>
 			<td colspan="" rowspan="" headers=""><a href="../user/bukti/<?php echo $dataTrs['bukti_transfer']; ?>"  target='_blank' title="">Attacment</td></a>
 			<td colspan="" rowspan="" headers=""><?php echo $dataTrs['status']; ?></td>
@@ -84,8 +85,8 @@ $dataOrd =$queryOrd->fetch_array();
 		?>
 		
 		<tr style="height:50px;">
-			<td colspan="7" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
-			<td align="center" rowspan="7" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
+			<td colspan="8" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
+			<td align="center" rowspan="7" ><b>Rp. <?php echo number_format($total+$biaya); ?></b></td>
 			
 		</tr>
 	
@@ -97,12 +98,20 @@ $status = $data['status'];
 
 	if ($data['status']=="Belum Dibayar"){
 echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
+?>
+<td>&nbsp;<i class="btn btn-danger glyphicon glyphicon-remove-circle" ><a href="aksi/aksi_order.php?act=reject&amp;id=<?php echo $id; ?>">Reject</a></i></td>
 
+<?php
  }else{
  	if ($data['status']=="Barang sudah dikirim") {
  		echo '<strong style="color: red;">Sudah Dibayar</strong>';
-
+ 		
  	}else{
+ 		if ($data['status']=='Transaksi Ditolak') {
+			echo '<strong style="color: red;">Transaksi Sudah Di Reject Oleh</strong>';
+			echo "<H1>".$_SESSION['nama']."</h1>";
+ 			
+ 		}else{
 ?>
 
 <td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
@@ -110,6 +119,7 @@ echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
 <i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>">Print</a></i></td>
 
 <?php
+}
 }
 	}
 	

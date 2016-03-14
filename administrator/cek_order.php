@@ -4,7 +4,7 @@ include_once '../setting/server.php';
 include '../menu/head_admin.php';
 include '../menu/tengah_admin.php';
 include 'jumlah_order.php';
-$data = $conn->query("SELECT * FROM order_detail");
+$data = $conn->query("SELECT * FROM order_detail ");
 $row12 =$data->num_rows;
 //$queryOrd = $conn->query("SELECT * FROM transaksi ");
 

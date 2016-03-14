@@ -52,6 +52,11 @@ $queryOrd = $conn->query("SELECT * FROM order_detail WHERE id_order='$id'");
 }
 $status = $conn->query("UPDATE transaksi SET status='Barang sudah dikirim' WHERE id_order='$id'");
 	echo "<script>window.alert('SELAMAT Transaksi Sudah di proses');</script>";
-	echo "<script>window.location = '../cek_order.php';</script>";
+	echo "<script>window.location = '../order.php?id=$id';</script>";
+}
+if ($act=='reject') {
+	$ubah =$conn->query("UPDATE  transaksi SET status='Transaksi Ditolak' WHERE id_order='$id'");
+	echo "<script>window.alert('Transaksi Sudah di Reject');</script>";
+	echo "<script>window.location = '../order.php?id=$id';</script>";
 }
 ?>

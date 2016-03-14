@@ -100,7 +100,6 @@ $dataOrd =$queryOrd->fetch_array();
 		</tr>
 
 	</table>
-<td><a href="print.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-print"></i>Klik Untuk Mencetak Struk</a></td><br>
 	<?php
 	$query = $conn->query("SELECT * FROM transaksi WHERE id_order='$id'");
 $data  = $query->fetch_array();
@@ -109,7 +108,14 @@ $status = $data['status'];
 	if ($data['status']=="Belum Dibayar"){
 	 echo "<td><a href='konfir_pesan.php?id_order=$id'<i class='glyphicon glyphicon-check'></i>Konfirmasi Pembayaran</a></td>";
           }else{
-           
+           if ($data['status']=="Transaksi Ditolak") {
+          	echo '<strong style="color: red;">Maap Transaksi Anda Sudah Tidak falid</strong>';	
+
+           }else{
+           	?>
+           	<td><a href="print.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-print"></i>Klik Untuk Mencetak Struk</a></td><br>
+<?php
+           }
            }
            if ($data['status']=="Barang sudah dikirim") {
            		 echo "<td><a href='feedback_pesan.php?id=$id'<i class='glyphicon glyphicon-check'></i>Konfirmasi Barang Diterima</a></td>";

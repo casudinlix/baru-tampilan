@@ -3,27 +3,22 @@ include "../menu/head_admin.php";
 include "../setting/server.php";
 include '../menu/tengah_admin.php';
 include 'halaman_transaksi.php';
-$tampil2="SELECT * FROM transaksi WHERE status='Barang sudah dikirim'";
+$tampil2="SELECT id_order, count(id_order) AS jumlah FROM transaksi GROUP BY id_order HAVING(COUNT(id_order)> 1)";
 							$hasil2=$conn->query($tampil2);
-							$jmldata=$hasil2->num_rows;
+							$jmldata=$hasil2->fetch_array();
 							
 
 //$query = $conn->query("SELECT * FROM transaksi, m_produk transaksi.id_produk=m_produk.id_produk ");
 //$jual=$query->fetch_array();
 //
-?>
 
-
-
-
-
+  
+  ?>
 
  <div id="page-wrapper" >
-
-      	
+Jumlah Order Valid : <?php echo $jmldata['jumlah']; ?>
 
 <a style="margin-bottom:10px" href="print_laporan_penjualan.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
-Jumlah Order Valid : <?php echo $jmldata; ?>
 <table class="table table-bordered">
 <div class="container">
 	<tr class="wrapper warning">
@@ -42,51 +37,55 @@ Jumlah Order Valid : <?php echo $jmldata; ?>
 <tr class="success">
 <?php
 //$query = $conn->query("SELECT * FROM m_produk, transaksi ORDER BY id_produk ASC");
+$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE status='Barang sudah dikirim' AND transaksi.id_produk=m_produk.id_produk");
 
-$queryTrs = $conn->query("SELECT * FROM transaksi WHERE status='Barang sudah dikirim'");
+//$queryTrs = $conn->query("SELECT * FROM transaksi WHERE status='Barang sudah dikirim'");
 $no=0;
-			while($dataTrs = $queryTrs->fetch_array()){
 
-				$queryPro = $conn->query("SELECT * FROM m_produk");
-				$dataPro = $queryPro->fetch_array();
+
+				//$queryPro = $conn->query("SELECT * FROM m_produk");
+				//$dataPro = $queryPro->fetch_array();
 				
-	//while ($data= $query->fetch_array()) {
+	while ($data= $queryTrs->fetch_array()) {
 		# code...
 	$no++;
 ?>
 	<tbody>
 		<tr class="danger">
 				<td colspan="" rowspan="" headers=""><?php echo $no; ?></td>
-		<td colspan="" rowspan="" headers=""><?php echo $dataTrs['id_order']; ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $dataPro['id_produk']; ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $dataTrs['qty']; ?></td>
-<td colspan="" rowspan="" headers="">Rp-,<?php echo number_format($dataPro['harga']) ; ?>-,</td>
-<td colspan="" rowspan="" headers=""><?php echo $dataTrs['type_order']; ?></td>
-<td colspan="" rowspan="" headers="" class="success">Rp,-<?php echo number_format($dataTrs['biaya']) ; ?>,-/Kg</td>
-<td colspan="" rowspan="" headers=""><?php echo $dataTrs['tanggal'] ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $dataTrs['status']; ?></td>
+		<td colspan="" rowspan="" headers=""><?php echo $data['id_order']; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $data['id_produk']; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $data['qty']; ?></td>
+<td colspan="" rowspan="" headers="">Rp-,<?php echo number_format($data['harga']) ; ?>-,</td>
+<td colspan="" rowspan="" headers=""><?php echo $data['type_order']; ?></td>
+<td colspan="" rowspan="" headers="" class="success">Rp,-<?php echo number_format($data['biaya']) ; ?>,-/Kg</td>
+<td colspan="" rowspan="" headers=""><?php echo $data['tanggal'] ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $data['status']; ?></td>
 
 		</tr>
 	</tbody>
 
 
 </tr>
+<?php 
+error_reporting(0);
 
+$subtotal = $data['harga'] * $data['qty'];
+				$biaya =$data['biaya'] + $data['qty'] ;
+				$total = $total + $subtotal;
+
+} ?>
 </div>
 </div>
 <?php 
-error_reporting(0);
-$subtotal = $dataPro['harga'] * $dataTrs['qty'];
-				$biaya =$dataTrs['biaya'] + $dataTrs['qty'] ;
-				$total = $total + $subtotal;
 
 
-}
+
 
 		?>
  
  <tr class="info">
-		<td colspan="8">Total Pendapatan: <i class="glyphicon glyphicon-thumbs-up"></i> <b> Rp.<?php echo number_format($total+$biaya);?>-,</b>
+		<td colspan="8">Total Pendapatan: <i class="glyphicon glyphicon-thumbs-up"></i> <b> Rp.<?php echo number_format($total);?>-,</b>
 </td>
 
 		<td>			

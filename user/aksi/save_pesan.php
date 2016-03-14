@@ -6,7 +6,7 @@ include '../../setting/session.php';
 
 $id = $_POST['id'];
 $qty = $_POST['qty'];
-
+//$harga =$_POST['harga'];
 
 include 'fungsi.php';
 $time = date("Y-m-d");

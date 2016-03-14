@@ -9,7 +9,7 @@ $kode =$_POST['kode'];
 $biaya =$_POST['ongkos'];
 //$select =$conn->query("SELECT * FROM transaksi WHERE id_order='$id'");
 //$data =$select->fetch_assoc();
-
+$email=$_POST['email'];
 
 $foto= $_FILES['bukti']['name'];
 $acak = $kode."-".rand(1,99);
@@ -24,7 +24,9 @@ $unic = $acak.$foto;
 if ($sql) {
 	move_uploaded_file($_FILES['bukti']['tmp_name'],"../bukti/".$acak.$_FILES['bukti']['name']);
 	$deleteOt = $conn->query("DELETE FROM order_user WHERE username='$idt'");
-	echo "<script>window.location = '../sumari.php?id=$kode';</script>";
+require "email1.php";
+echo "<script>window.alert('Terimakasih , Cek Email anda sekarang untuk petunjuk pembayaran');</script>";
+echo "<script>window.location = '../sumari.php?id=$kode';</script>";
 
 }else{
 	die($sql1.$conn->error);

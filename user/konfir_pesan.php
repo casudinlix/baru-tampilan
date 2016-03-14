@@ -40,8 +40,8 @@ $datacus = $query->fetch_array();
 <div class="form-group">
   <label class="col-md-4 control-label" for="ongkos">Ongkos Kirim</label>
   <div class="col-md-4">
-    <select id="ongkos" name="ongkos" class="form-control">
-    <option value="1">Pilih</option>
+    <select id="ongkos" name="ongkos" class="form-control" >
+    <option value="" class="required" ></option>
     <?php
 		$ambil = $conn->query("SELECT * FROM tarif ");
 		if($ambil->num_rows > 0){
