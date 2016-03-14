@@ -7,7 +7,7 @@ include '../../setting/session.php';
 $id = $_POST['id'];
 $qty = $_POST['qty'];
 //$harga =$_POST['harga'];
-
+$email =$_POST['email'];
 include 'fungsi.php';
 $time = date("Y-m-d");
 
@@ -30,7 +30,11 @@ foreach($qty as $key => $value){
 }
 $deleteOt = $conn->query("DELETE FROM order_user WHERE username='$idt'");
 if ($hasil) {
-	header("Location:../transaksi_detail.php?id_order=$idOrd");
+	require "email1.php";
+	echo "<script>window.alert('Terimakasih , Cek Email anda sekarang untuk petunjuk pembayaran');</script>";
+	echo "<script>window.location = '../transaksi_detail.php?id_order=$idOrd';</script>";
+
+	//header("Location:../transaksi_detail.php?id_order=$idOrd");
 }
 
 

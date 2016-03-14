@@ -33,13 +33,15 @@ $queryTrs = $conn->query("SELECT id_order FROM transaksi WHERE username='$idt'")
 
 
  <div id="page-wrapper" >
- 	<table class="table table-bordered">
- 	Transakasi Anda
+ 	<table class="table" >
+ 	Riwayat Transakasi Anda
  	<?php while ($row = $queryTrs->fetch_array()) {
  		?>
+ 		<tr colspan="" align="center">
  		<td>
  	
- 	<a href="transaksi_detail.php?id_order=<?php echo $row['id_order']; ?>" title=""><?php echo $row['id_order']; ?></a><br>
+ 	<a href="transaksi_detail.php?id_order=<?php echo $row['id_order']; ?>" title=""><?php echo $row['id_order']; ?></a>
+
  	
 </td>
  	<?php } ?>

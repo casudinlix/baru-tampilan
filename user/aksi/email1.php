@@ -2,7 +2,7 @@
 
 
 		$to 	= $_POST['email'];
-		$judul 	= "Konfirmasi Pembelian Anda ".$kode;
+		$judul 	= "Konfirmasi Pembelian Anda ".$idOrd;
 		$dari	= "From: no-reply@bengkel.angkatan31.net \n";
 		$dari	.= "Content-type: text/html \r\n";
 
@@ -13,7 +13,7 @@
 
 
 		";
-		$pesan	.= "KODE Pembelian: ".$kode."
+		$pesan	.= "KODE Pembelian: ".$idOrd."
 
 
 

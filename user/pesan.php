@@ -31,7 +31,7 @@ if ($numRow == 0) {
 	
 		<table class="table table-bordered" rowspan="2">
 			<tr class="warning">
-				<td rowspan="" colspan="8"><h5>Pembelian <?php echo $_SESSION['nama']; ?> :</h5></td>
+				<td rowspan="" colspan="8"><h5>Pembelian :<?php echo $_SESSION['nama']; ?> </h5></td>
 			</tr>
 			<tr class="inverse">
 				<td colspan="8">
@@ -82,6 +82,7 @@ $no = 0;
 					<?php else: ?>
 					<?php endif ?>
 				</td><input type="hidden" name="harga[]" value="<?php echo $row['harga'] ?>" >
+				<input type="hidden" name="email" value="<?php echo $idt; ?>">
 					<td>Rp-,<?php echo $row['harga'];?></td>
 
 						<td colspan="" rowspan="" headers="">Rp-,<?php echo $subtotal; ?></td>

@@ -118,7 +118,7 @@ $status = $data['status'];
            }
            }
            if ($data['status']=="Barang sudah dikirim") {
-           		 echo "<td><a href='feedback_pesan.php?id=$id'<i class='glyphicon glyphicon-check'></i>Konfirmasi Barang Diterima</a></td>";
+           		 echo "<td><a href='feedback_pesan.php?id_order=$id'<i class='glyphicon glyphicon-check'></i>Konfirmasi Barang Diterima</a></td>";
 
            }
            if ($data['status']=="Sedang Verifikasi Data") {

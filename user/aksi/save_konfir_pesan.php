@@ -24,8 +24,8 @@ $unic = $acak.$foto;
 if ($sql) {
 	move_uploaded_file($_FILES['bukti']['tmp_name'],"../bukti/".$acak.$_FILES['bukti']['name']);
 	$deleteOt = $conn->query("DELETE FROM order_user WHERE username='$idt'");
-require "email1.php";
-echo "<script>window.alert('Terimakasih , Cek Email anda sekarang untuk petunjuk pembayaran');</script>";
+
+
 echo "<script>window.location = '../sumari.php?id=$kode';</script>";
 
 }else{
