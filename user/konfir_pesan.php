@@ -41,7 +41,7 @@ $datacus = $query->fetch_array();
   <label class="col-md-4 control-label" for="ongkos">Ongkos Kirim</label>
   <div class="col-md-4">
     <select id="ongkos" name="ongkos" class="form-control" >
-    <option value="" class="required" ></option>
+    <option value="" class="required" >Pilih</option>
     <?php
 		$ambil = $conn->query("SELECT * FROM tarif ");
 		if($ambil->num_rows > 0){
@@ -71,7 +71,7 @@ $datacus = $query->fetch_array();
 <div class="form-group">
   <label class="col-md-4 control-label" for="bukti">Bukti transfer</label>
   <div class="col-md-4">
-    <input id="bukti" name="bukti" class="input-file" type="file">
+    <input id="bukti" name="bukti" class="input-file" type="file" required="">
   </div>
 </div>
 <div class="form-group">

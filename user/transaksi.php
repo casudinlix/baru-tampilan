@@ -40,12 +40,14 @@ $queryTrs = $conn->query("SELECT id_order FROM order_detail WHERE username='$idt
  	<?php while ($row = $queryTrs->fetch_array()) {
  		?>
  		<tr colspan="" align="left" class="info">
- 		<td>
+ 		<td class="danger">
  	
- 	<a href="transaksi_detail.php?id_order=<?php echo $row['id_order']; ?>" title=""><?php echo $row['id_order']; ?></a>
+ 	<a href="transaksi_detail.php?id_order=<?php echo $row['id_order']; ?>" class="glyphicon glyphicon-share"><?php echo $row['id_order']; ?></a>
 
  	
 </td>
+ 	
+</tr>
  	<?php } ?>
 
  	</table>
