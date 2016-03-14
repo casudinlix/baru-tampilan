@@ -18,8 +18,10 @@ if ($numRow = $queryOrd->num_rows == 0) {
 }
 $queryOrd = $conn->query("SELECT * FROM order_detail WHERE username='$idt' ");
 $dataOrd =$queryOrd->fetch_array();
+$queryOrd1 = $conn->query("SELECT  * FROM order_detail WHERE username='$idt' ");
+$dataOrd1 =$queryOrd1->num_rows;
 
-$queryTrs = $conn->query("SELECT id_order FROM transaksi WHERE username='$idt'");
+$queryTrs = $conn->query("SELECT id_order FROM order_detail WHERE username='$idt'");
  ?>
  <!DOCTYPE html>
  <html>
@@ -34,10 +36,10 @@ $queryTrs = $conn->query("SELECT id_order FROM transaksi WHERE username='$idt'")
 
  <div id="page-wrapper" >
  	<table class="table" >
- 	Riwayat Transakasi Anda
+ 	Riwayat Transakasi Anda <?php echo $dataOrd1; ?>
  	<?php while ($row = $queryTrs->fetch_array()) {
  		?>
- 		<tr colspan="" align="center">
+ 		<tr colspan="" align="left" class="info">
  		<td>
  	
  	<a href="transaksi_detail.php?id_order=<?php echo $row['id_order']; ?>" title=""><?php echo $row['id_order']; ?></a>

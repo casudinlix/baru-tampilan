@@ -112,6 +112,9 @@ echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
 			echo "<H1>".$_SESSION['nama']."</h1>";
  			
  		}else{
+ 			if ($data['status']=="Barang Sudah Diterima") {
+ 				echo '<strong style="color: Blue;">Transaksi Done</strong>';
+ 			}else{
 ?>
 
 <td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
@@ -122,6 +125,7 @@ echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
 }
 }
 	}
+}
 	
 	?>
 

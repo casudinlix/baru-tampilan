@@ -40,7 +40,7 @@ $dataOrd =$queryOrd->fetch_array();
 <td>
 <div class="form-group">
   <label class="col-md-4 control-label" for="feedback">Feedback</label>
-  <div class="col-md-4">                     
+  <div class="col-md-4">
     <textarea class="form-control" id="feedback" name="feedback" placeholder="Pesan Untuk Kami"></textarea>
   </div>
 </div>

@@ -68,6 +68,7 @@ $no = 0;
 		
 					?>
 					<input type="hidden" name="id[]" value="<?php echo $row['id_produk'] ?>" >
+					<input type="hidden" name="email" value="<?php echo $idt; ?>"
 					<tr class="info"><td colspan="" rowspan="" headers=""><?php echo $no; ?></td>
 					
 					<td colspan="" rowspan="" headers=""><?php echo $row['nama_produk']; ?></td>
@@ -82,7 +83,7 @@ $no = 0;
 					<?php else: ?>
 					<?php endif ?>
 				</td><input type="hidden" name="harga[]" value="<?php echo $row['harga'] ?>" >
-				<input type="hidden" name="email" value="<?php echo $idt; ?>">
+				>
 					<td>Rp-,<?php echo $row['harga'];?></td>
 
 						<td colspan="" rowspan="" headers="">Rp-,<?php echo $subtotal; ?></td>
