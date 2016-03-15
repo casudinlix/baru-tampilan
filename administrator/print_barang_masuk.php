@@ -49,7 +49,7 @@ while($lihat=$query->fetch_array()){
 	$pdf->Cell(5, 0.8, $lihat['nama_produk'], 1, 0,'L');
 	$pdf->Cell(4, 0.8, $lihat['kategori'],1, 0, 'L');
 	
-	$pdf->Cell(4.5, 0.8,$rp.$lihat['harga'],1, 0, 'L');
+	$pdf->Cell(4.5, 0.8,$rp.number_format($lihat['harga']),1, 0, 'L');
 	$pdf->Cell(4.5, 0.8, $lihat['tgl_masuk'],1, 0, 'C');	
 	$pdf->Cell(2, 0.8, $lihat['stock'], 1, 1,'C');
 

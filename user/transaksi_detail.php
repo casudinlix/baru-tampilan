@@ -84,10 +84,10 @@ $dataOrd =$queryOrd->fetch_array();
 		<tr style="height:50px;" class="warning">
 			<td align="center"><?php echo $no; ?></td>
 			<td><?php echo $dataPro['nama_produk']; ?></td>
-			<td align="center">Rp. <?php echo $dataPro['harga']; ?></td>
+			<td align="center">Rp. <?php echo number_format($dataPro['harga']); ?></td>
 			<td align="center"><?php echo $dataTrs['qty']; ?></td>
 			<td align="center"><?php echo $dataPro['berat'] ?>/Kg</td>
-			<td align="center">Rp. <?php echo $subtotal+$biaya; ?></td>
+			<td align="center">Rp. <?php echo number_format($subtotal+$biaya); ?></td>
 			<td align="center"><?php echo $dataTrs['status']; ?></td>
 		</tr>
 		<?php
@@ -96,7 +96,7 @@ $dataOrd =$queryOrd->fetch_array();
 		?>
 		<tr style="height:50px;" class="danger">
 			<td colspan="6" align="right"><b style="margin-right: 3px;">Total Biaya</b></td>
-			<td align="center" rowspan="3" ><b>Rp. <?php echo $total+$biaya; ?></b></td>
+			<td align="center" rowspan="3" ><b>Rp. <?php echo number_format($total+$biaya); ?></b></td>
 		</tr>
 
 	</table>

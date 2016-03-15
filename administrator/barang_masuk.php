@@ -10,7 +10,7 @@ $tampil2="SELECT * FROM m_produk";
  <div id="page-wrapper" >
 
       	
-<form action="cari_barang.php" method="GET">
+<form action="cari_barang.php" method="get">
 	<div class="input-group col-md-5 col-md-offset-7">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
 		<input type="text" class="form-control" placeholder="Cari barang di sini .." aria-describedby="basic-addon1" name="cari">	
@@ -18,6 +18,7 @@ $tampil2="SELECT * FROM m_produk";
 </form>
 <a style="margin-bottom:10px" href="print_barang_masuk.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
 Jumlah Barang : <?php echo $jmldata; ?>
+
 <table class="table table-bordered">
 <div class="container">
 	<tr class="wrapper warning">
@@ -31,17 +32,18 @@ Jumlah Barang : <?php echo $jmldata; ?>
 	</tr>
 	<?php 
 	if(isset($_GET['cari'])){
-		$cari=$conn->escape_string($_GET['cari']);
+		$cari=$_GET['cari'];
 		$brg=$conn->query("SELECT * FROM m_produk WHERE nama_produk LIKE '%$cari%' OR kategori LIKE '%$cari%'");
 	}else{
-		
+$brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
+
 	}
 
 	?>
 
 <tr class="success">
-<?php while ($data=$katalog->fetch_array()) {
-	# code...
+<?php while ($data=$brg->fetch_array()) {
+
  ?>
 	<tbody>
 		<tr class="danger"><td colspan="" rowspan="" headers=""><?php echo $data['0']; ?></td>

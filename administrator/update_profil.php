@@ -21,7 +21,7 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
  <body>
  <div id="page-wrapper" >
  	
- <form class="form-horizontal" action="../lib/update_u.php" method="POST" accept-charset="utf-8">
+ <form class="form-horizontal" action="../lib/update_a.php" method="POST" accept-charset="utf-8">
 <fieldset>
 
 <!-- Form Name -->

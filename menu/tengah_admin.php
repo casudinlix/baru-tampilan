@@ -99,6 +99,9 @@ Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class
                      <li>
                         <a href="profil.php"><i class="glyphicon glyphicon-cog"></i>Setting <span class="badge"></span></a>
                     </li>
+                    <li>
+                        <a href="penjualan.php"><i class="glyphicon glyphicon-usd"></i>Penjualan <span class="badge"></span></a>
+                    </li>
                     
                 </ul>
                             </div>

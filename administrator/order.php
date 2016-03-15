@@ -98,26 +98,33 @@ $status = $data['status'];
 
 	if ($data['status']=="Belum Dibayar"){
 echo '<strong style="color: red;">Transaksi Belum di bayar</strong>';
+echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
+
 ?>
-<td>&nbsp;<i class="btn btn-danger glyphicon glyphicon-remove-circle" ><a href="aksi/aksi_order.php?act=reject&amp;id=<?php echo $id; ?>">Reject</a></i></td>
+<td>&nbsp;<i class="btn btn-danger glyphicon glyphicon-remove-circle" ><a href="aksi/aksi_order.php?act=reject&amp;id=<?php echo $id; ?>"onclick="return confirm('Apakah anda yakin Reject Order Ini?')">Reject</a></i></td>
 
 <?php
  }else{
  	if ($data['status']=="Barang sudah dikirim") {
- 		echo '<strong style="color: red;">Sudah Dibayar</strong>';
- 		
+ 		echo '<strong style="color: red;">Sudah Dibayar</strong>&nbsp;';
+ 		echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
+
  	}else{
  		if ($data['status']=='Transaksi Ditolak') {
-			echo '<strong style="color: red;">Transaksi Sudah Di Reject Oleh</strong>';
-			echo "<H1>".$_SESSION['nama']."</h1>";
+			echo '<strong style="color: red;">Transaksi Sudah Di Reject </strong>';
+			echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
  			
  		}else{
  			if ($data['status']=="Barang Sudah Diterima") {
  				echo '<strong style="color: Blue;">Transaksi Done</strong>';
+ 				echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
+
  			}else{
 ?>
 
-<td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>">Approve</a></i></td>
+<td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>" onclick="return confirm('Apakah anda yakin Approve Order ini?')">Approve</a></i></td>
+<i class="btn btn-success glyphicon glyphicon-chevron-left" ><a href='cek_order.php'>Kembali</a></i>
+
 <td>
 <i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>">Print</a></i></td>
 
