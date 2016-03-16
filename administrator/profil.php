@@ -25,7 +25,7 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
  <body>
  <div id="page-wrapper" align="center">
  
- <form action="../lib/update_u.php" method="POST" accept-charset="utf-8">
+ <form action="../lib/update_a.php" method="POST" accept-charset="utf-8">
  <table class="table table-striped">
  	<img src="foto/<?php echo $data['foto'];?>" width="200px" height="200px"/>
  <br>
@@ -42,7 +42,7 @@ $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
                         <a href="update_profil.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-cog"></i>Edit Profil<span class="badge"></span></a>
                     </li>
                     <li class="active-link">
-                        <a href="foto.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-picture"></i>Ganti Foto <span class="badge"></span></a>
+                        <a href="foto.php"><i class="glyphicon glyphicon-picture"></i>Ganti Foto <span class="badge"></span></a>
                     </li>
                     <li class="active-link">
                         <a href="pass.php?id=<?php echo $data['id']; ?>"><i class="glyphicon glyphicon-leaf "></i>Ganti Password <span class="badge"></span></a>

@@ -32,7 +32,7 @@ Jumlah Barang : <?php echo $jmldata; ?>
 	</tr>
 	<?php 
 	if(isset($_GET['cari'])){
-		$cari=$_GET['cari'];
+		$cari=htmlspecialchars($_GET['cari']);
 		$brg=$conn->query("SELECT * FROM m_produk WHERE nama_produk LIKE '%$cari%' OR kategori LIKE '%$cari%'");
 	}else{
 $brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");

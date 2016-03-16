@@ -1,10 +1,18 @@
 <?php 
 
- include_once '../setting/server.php';
+
+$conn =new mysqli("localhost","cas","bintang","TA");
+if (mysql_errno()) {
+	die("ERROR!!".connect_error);
+}
+
+$host='http://'.$_SERVER['SERVER_NAME'].'/1';
+$host1='http://'.$_SERVER['PHP_SELF'].'';
+
 
 
 function random_char( $panjang ) { 
-	$karakter = 'P'; 
+	$karakter = 'T'; 
 	$string = ''; 
 	for ( $i = 0; $i < $panjang; $i++ ) { 
 		$pos = strlen( $karakter ) - 1 ; 
@@ -15,7 +23,7 @@ return $string;
 
 
 $years = date( 'Y' ); // tahun
-$get_3_number_of_year = substr( $years,-3 ); // mengambil 3 angka dari sebelah kanan pada tahun sekarang
+$get_3_number_of_year = substr( $years,-4 ); // mengambil 3 angka dari sebelah kanan pada tahun sekarang
 
 
 /**
@@ -23,7 +31,7 @@ $get_3_number_of_year = substr( $years,-3 ); // mengambil 3 angka dari sebelah k
 * Query untuk mengambil 1 baris data berdasarkan id / kode yg terakhir
 * RIGHT(kd_barang,3) maksudnya mengambil 3 angka dari sebelah kanan diurutkan berdasarkan kode tsb secara Descending
 */
-$get_data = $conn->query("SELECT RIGHT(id_produk,2) FROM m_produk ORDER BY RIGHT(id_produk,2) DESC" );
+$get_data = $conn->query("SELECT RIGHT(id_order,2) FROM transaksi ORDER BY RIGHT(id_order,2) DESC" );
 
 $check_data = $get_data->num_rows;
 $fetch_data = $get_data->fetch_array();

@@ -20,13 +20,26 @@ $tampil2="SELECT * FROM m_produk";
 							$hasil2=$conn->query($tampil2);
 							$jmldata=$hasil2->num_rows;
 ?>
+<form action="cari_produk.php" method="get">
+	<div class="input-group col-md-5 col-md-offset-7">
+		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+		<input type="text" class="form-control" placeholder="Cari barang di sini .." aria-describedby="basic-addon1" name="cari">	
+	</div>
+</form>
 <table class="table table-bordered">
 Jumlah Barang : <?php echo $jmldata; ?>
 
-                        <?php 
+                        <?php
 
 
-while ($data=$katalog->fetch_array()) { ?>
+	if(isset($_GET['cari'])){
+		$cari=htmlspecialchars($_GET['cari']);
+		$brg=$conn->query("SELECT * FROM m_produk WHERE nama_produk LIKE '%$cari%' OR kategori LIKE '%$cari%'");
+	}else{
+$brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
+
+	}
+while ($data=$brg->fetch_array()) { ?>
                       <tr class="success">
 <font color="black">
 

@@ -38,7 +38,7 @@
           			<div class="icons-box">
                         <div class="title"><h3><?php echo $data['nama_produk']; ?></h3></div>
                         <img src="produk/<?php echo $data['gambar']; ?>" class="img-circle" />
-						<div><h3>Rp.<?php echo $harga;?></h3></div>
+						<div><h3>Rp.<?php echo number_format($harga);?></h3></div>
 					<!--	<p>
 						
 						</p> -->

@@ -27,54 +27,43 @@ $pdf->Line(1,3.2,40.5,3.2);
 $pdf->SetLineWidth(0);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',30);
-$pdf->Cell(40,0.3,"Laporan Penjualan",0,30,'C');
+$pdf->Cell(40,0.3,"Nota Kasir",0,30,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','i',10);
 $pdf->Cell(5,0.19,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
 $pdf->ln(0.5);
+
+$pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');
-$pdf->Cell(5, 0.8, 'nomor Order', 1, 0, 'C');
-$pdf->Cell(5, 0.8, 'Kode Produk', 1, 0, 'C');
-$pdf->Cell(1, 0.8, 'Qty', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Tanggal', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Nomor Order', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Nama Barang', 1, 0, 'C');
+$pdf->Cell(4.5, 0.8, 'Nama Pembeli', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Harga', 1, 0, 'C');
-$pdf->Cell(4.5, 0.8, 'Type Order', 1, 0, 'C');
-$pdf->Cell(4.5, 0.8, 'Biaya Kirim', 1, 0, 'C');
-$pdf->Cell(6, 0.8, 'Tanggal Order', 1, 0, 'C');
-$pdf->Cell(6, 0.8, 'Status', 1, 2, 'C');
+$pdf->Cell(4.5, 0.8, 'Qty', 1, 0, 'C');
 $pdf->SetFont('Arial','',10);
 //$pdf->ln(0);
 $rp="Rp.-";
 //$rp=number_format($dataPro['harga']);
-
-$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' AND transaksi.id_produk=m_produk.id_produk");
+$id_order=$_GET['id_order'];
+$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE id_order='$id_order' AND transaksi.id_produk=m_produk.id_produk");
 $no=1;
-$pdf->ln(0);
-
-			while($dataTrs = $queryTrs->fetch_array()){
-				$pendapatan =$conn->query("SELECT sum(harga) AS total FROM m_produk,transaksi WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' AND transaksi.id_produk=m_produk.id_produk");
-				$data=$pendapatan->fetch_array();
-	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
-	$pdf->Cell(5, 0.8, $dataTrs['id_order'] , 1, 0, 'C');
-	$pdf->Cell(5, 0.8, $dataTrs['id_produk'] , 1, 0, 'C');		
-	$pdf->Cell(1, 0.8, $dataTrs['qty'] , 1, 0, 'C');
-	$pdf->Cell(4.5, 0.8, $rp.number_format($dataTrs['harga']) , 1, 0, 'C');
-	$pdf->Cell(4.5, 0.8, $dataTrs['type_order'] , 1, 0, 'C');
-	$pdf->Cell(4.5, 0.8,$rp. number_format($dataTrs['biaya']) , 1, 0, 'C');
-	$pdf->Cell(6, 0.8, $dataTrs['tanggal'] , 1, 0, 'C');
-	$pdf->Cell(6, 0.8, $dataTrs['status'] , 1, 0, 'C');
 $pdf->ln(0.8);
+			while($dataTrs = $queryTrs->fetch_array()){
+	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
+	$pdf->Cell(5, 0.8, $dataTrs['tanggal'] , 1, 0, 'C');
+	$pdf->Cell(5, 0.8, $dataTrs['id_order'] , 1, 0, 'C');
+	$pdf->Cell(5, 0.8, $dataTrs['nama_produk'] , 1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $dataTrs['username'] , 1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $rp.number_format($dataTrs['harga']) , 1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $dataTrs['qty'] , 1, 0, 'C');
+	
+	
 $no++;
 
 }
-$pdf->SetFont("Times","B",15);
-		$pdf->ln(1);
-		$pdf->Cell(6, 0.8,'Total Pendapatan' , 0, 0, 'C');
-$pdf->ln(1);
-		//$pdf->Cell(6, 0.8,$rp , 0, 0, 'C');
-$pdf->Cell(6, 0.8,'Rp-,' , 0, 0, 'C');
-$pdf->ln(0.5);
-			$pdf->Cell(6, 0.8, number_format($data['total']) , 0, 0, 'C');
+
 $pdf->Output("laporan_penjualan(cas).pdf","I");
 
 ?>

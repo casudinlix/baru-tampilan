@@ -1,7 +1,7 @@
 <?php 
 include "../menu/head_admin.php";
 include "../setting/server.php";
-include '../menu/menu_user.php';
+include '../menu/tengah_admin.php';
 
 $query_pelanggan = "SELECT * FROM login WHERE id='".$_SESSION['id']."'LIMIT 1";
 	 $hasil = $conn->query($query_pelanggan);

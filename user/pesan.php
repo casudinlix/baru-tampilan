@@ -22,16 +22,14 @@ if ($numRow == 0) {
 	echo "<script>window.alert('Daftar Belanja Kosong');</script>";
 	echo "<script>window.location = 'user.php';</script>";
 }
-
-
 ?>
  <form class="form-horizontal" action="aksi/save_pesan.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 
-<div id="page-wrapper" >
+<div id="page-wrapper">
 	
 		<table class="table table-bordered" rowspan="2">
 			<tr class="warning">
-				<td rowspan="" colspan="8"><h5>Pembelian :<?php echo $_SESSION['nama']; ?> </h5></td>
+				<td rowspan="" colspan="8"><h5>Pembelian :&nbsp;<?php echo $_SESSION['nama'];?> </h5></td>
 			</tr>
 			<tr class="inverse">
 				<td colspan="8">
@@ -83,7 +81,7 @@ $no = 0;
 					<?php else: ?>
 					<?php endif ?>
 				</td><input type="hidden" name="harga[]" value="<?php echo $row['harga'] ?>" >
-				>
+				
 					<td>Rp-,<?php echo $row['harga'];?></td>
 
 						<td colspan="" rowspan="" headers="">Rp-,<?php echo $subtotal; ?></td>

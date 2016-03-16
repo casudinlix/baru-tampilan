@@ -18,7 +18,7 @@ include '../menu/tengah_admin.php';
  
 <ul class="unstyled">
 <li class="">
-                        <H1><a href="barang_masuk.php" class="btn btn-info"><i class="glyphicon glyphicon-circle-arrow-down"></i>Barang Masuk</H1></a>
+                        <H1><a href="barang_masuk.php" class="btn btn-info"><i class="glyphicon glyphicon-circle-arrow-down"></i>Data Barang</H1></a>
                     </li>
                     <li class="active-link">
                         <h1><a href="laporan_penjualan.php" class="btn btn-danger"><i class="glyphicon glyphicon-circle-arrow-up"></i>Penjualan </h1></a>

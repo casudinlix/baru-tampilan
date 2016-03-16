@@ -31,9 +31,17 @@ $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(5,0.7,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
 $pdf->ln(1);
+
+$q=$conn->query("SELECT sum(harga) as total from m_produk");
+// select sum(total_harga) as total from barang_laku where tanggal='$tanggal'
+while($total=$q->fetch_array()){
+	$pdf->Cell(5, 0.8, "Total Modal", 0, 0,'L');		
+	$pdf->Cell(4.5, 0.8, "Rp. ".number_format($total['total'])." ,-", 0, 0,'C');	
+}
+$pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');
-$pdf->Cell(7, 0.8, 'Kode', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Kode', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'Nama Barang', 1, 0, 'C');
 $pdf->Cell(4, 0.8, 'Jenis', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'modal', 1, 0, 'C');
@@ -45,7 +53,7 @@ $no=1;
 $query=$conn->query("SELECT * FROM m_produk");
 while($lihat=$query->fetch_array()){
 	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
-	$pdf->Cell(7, 0.8, $lihat['id_produk'],1, 0, 'C');
+	$pdf->Cell(5, 0.8, $lihat['id_produk'],1, 0, 'C');
 	$pdf->Cell(5, 0.8, $lihat['nama_produk'], 1, 0,'L');
 	$pdf->Cell(4, 0.8, $lihat['kategori'],1, 0, 'L');
 	

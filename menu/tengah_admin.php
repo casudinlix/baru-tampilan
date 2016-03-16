@@ -56,7 +56,7 @@ $idt = $_SESSION['email'];
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="<?php echo $host; ?>/img/ico1.jpg" height="65px" class="img-circle" />
+                        <img src="<?php echo $host; ?>/img/ico1.jpg" height="45px" class="img-circle" />
 
                     </a>
                     
@@ -70,10 +70,19 @@ $idt = $_SESSION['email'];
         <nav class="navbar-default navbar-side" role="navigation" align="left">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
-Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class="image-circle" width="70x"><br></td>
- <?php echo $_SESSION['nama']; ?>
+<?php
+$nama =$_SESSION['nama'];
+ 
+            ?>
+Selamat Datang <br></td>
+<?php echo $nama;
+ ?>
+ <br>
+<img class="img-circle" src="foto/<?php echo $_SESSION['foto']; ?>" width="70x">
  [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off"></i></a> ]
+ 
+    
+
                     <li class="active-link">
                         <a href="cek_order.php" ><i class="glyphicon glyphicon-ok-circle"></i>Cek Order <span class="badge"></span></a>
                     </li>
