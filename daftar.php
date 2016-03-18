@@ -1,7 +1,7 @@
 <?php 
 include_once 'setting/server.php';
 include_once 'menu/head.php';
-include 'menu/h.php';
+include 'menu/h1.php';
 
  ?>
 

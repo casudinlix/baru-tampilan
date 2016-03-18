@@ -3,7 +3,7 @@ include 'setting/server.php';
 
 include 'menu/head.php';
 
-include 'menu/h.php';
+include 'menu/h1.php';
 $id= $_GET['id'];
 ?>
 

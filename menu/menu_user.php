@@ -10,7 +10,7 @@ if (isset($_SESSION['role']))
  if ($_SESSION['role'] == "1")
    {   
    echo "Selamat Datang&nbsp".$_SESSION['nama']."</br>";
-   echo "<a href='../administrator.php'> Back </a>";
+   //echo "<a href='../administrator.php'> Back </a>";
    
 
    }
@@ -91,7 +91,9 @@ Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class
                     <li class="active-link">
                         <a href="profil.php"><i class="glyphicon glyphicon-user"></i>Profile <span class="badge"></span></a>
                     </li>
-
+                  <li class="active-link">
+                        <a href="about.php"><i class="glyphicon glyphicon-certificate"></i>About <span class="badge"></span></a>
+                    </li>
                     
                     
                      

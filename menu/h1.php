@@ -35,12 +35,12 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php" class="smoothScroll">Home</a></li>
-			<li> <a href="#Info" class="smoothScroll"> Tentang Kami</a></li>
-			<li> <a href="#Cara Pembelian" class="smoothScroll"> Panduan Pemesanan</a></li>
+			<li> <a href="index.php" class="smoothScroll"> Tentang Kami</a></li>
+			<li> <a href="index.php" class="smoothScroll"> Panduan Pemesanan</a></li>
 			
-			<li> <a href="#Katalog" class="smoothScroll"> Katalog</a></li>
-			<li> <a href="#blog" class="smoothScroll"> Komentar</a></li>
-			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
+			<li> <a href="index.php" class="smoothScroll"> Katalog</a></li>
+			<li> <a href="index.php" class="smoothScroll"> Komentar</a></li>
+			<li> <a href="index.php" class="smoothScroll"> Contact</a></li>
       <li> <a href="daftar.php" class="smoothScroll"> Daftar</a></li>
 			
 			</div>

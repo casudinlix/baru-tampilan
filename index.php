@@ -153,39 +153,30 @@ $p=$profile->fetch_array();
 			
 			<div class="row">
 				<div class="col-lg-6 blog-bg">
+				<?php 
+				$komentar = $conn->query("SELECT * FROM login,komentar WHERE login.username=komentar.username");
+				while ( $kom =$komentar->fetch_array()) {
+				
+				 ?>
 					<div class="col-lg-4 centered">
 					<br>
-						<p><img class="img img-circle" src="assets/img/team/team04.jpg" width="60px" height="60px"></p>
-						<h4>Muhammad Fakih</h4>
-						<h5>Published Feb 07.</h5>
+						<p><img class="img img-circle" src="user/foto/<?php echo $kom['foto']; ?>" width="60px" height="60px"></p>
+						<h4><?php echo $kom['username']; ?></h4>
+						<h5>Nomor Order :.</h5>
+						
+						<h5><?php echo $kom['id_order']; ?></h5>
 					</div>
 					<div class="col-lg-8 blog-content">
-						<h2>Menyukai</h2>
-						<p>Sangat membantu sekali bengkel online ini.</p>
-						<p><a href="#" class="icon icon-link"> Lanjut Baca</a></p>
+						<h2>Feedback</h2>
+						<p><?php echo $kom['isi']; ?></p>
+						<p><a href="#" class="icon icon-link"></a></p>
 						<br>
 					</div>
 				</div><!-- /col -->
 				
 				<div class="col-lg-6 blog-bg">
-					<div class="col-lg-4 centered">
-					<br>
-						<p><img class="img img-circle" src="assets/img/team/A jalak.jpg" width="60px" height="60px"></p>
-						<h4>Ahmad Samsuri</h4>
-						<h5>Published Feb 07.</h5>
+				<?php } ?>
 					</div>
-					<div class="col-lg-8 blog-content">
-						<h2>Menyukai</h2>
-						<p>Harus terus dikembangkan lagi bengkel online ini, Good!!!</p>
-						<p><a href="#" class="icon icon-link"> Lanjut Baca</a></p>
-						<br>
-					</div>
-				</div><!-- /col -->
-			</div><!-- /row -->
-			<br>
-			<br>
-		</div><!-- /container -->
-
 		
 		<!-- ==== SECTION DIVIDER6 ==== -->
 		<section class="section-divider textdivider divider6">
@@ -208,8 +199,8 @@ $p=$profile->fetch_array();
 				
 				<div class="col-lg-4">
 					<h3>Contact Information</h3>
-					<p><span class="icon icon-home"></span> Some Address 987, Bekasi<br/>
-						<span class="icon icon-phone"></span> +62 8120 0000 1111 <br/>
+					<p><span class="icon icon-home"></span> <?php echo $p['alamat']; ?><br/>
+						
 						<span class="icon icon-mobile"></span> +62 8120 0000 1111 <br/>
 						<span class="icon icon-envelop"></span> <a href="#"> WijayaMotor_bks@blacktie.co</a> <br/>
 						<span class="icon icon-twitter"></span> <a href="#"> @WijayaMotor_Bks </a> <br/>
@@ -219,7 +210,7 @@ $p=$profile->fetch_array();
 				
 				<div class="col-lg-4">
 					<h3>Support Us</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+					<p><?php echo $p['visi']; ?>.</p>
 				</div><!-- col -->
 
 			</div><!-- row -->
@@ -228,7 +219,7 @@ $p=$profile->fetch_array();
 
 		<div id="footerwrap">
 			<div class="container">
-				<h4>Created by <a href="http://blacktie.co">WM.Bekasi</a> - Copyright 2016</h4>
+				<h4>Created by <a href="#">WM.Bekasi</a> - Copyright 2016</h4>
 			</div>
 		</div>
 

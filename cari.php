@@ -1,80 +1,100 @@
 <?php 
 include 'setting/server.php';
 
-include 'menu/h.php';
+
 include 'menu/head.php';
-	
+include 'menu/h1.php';
+include "halaman.php";
 ?>
+<br>
+<br>
+<br>
+<table class="table table-bordered">
 
-<?php
+                        <?php
 
-$search = $_POST['search'];
 
-if ($_POST['search'] <> "") {
+	if(isset($_GET['cari'])){
+		$cari=htmlspecialchars($_GET['cari']);
+		$brg=$conn->query("SELECT * FROM m_produk WHERE nama_produk LIKE '%$cari%' OR kategori LIKE '%$cari%'");
+	}else{
+$brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
 
-		$sql = $conn->query("SELECT * FROM m_produk WHERE  nama_produk LIKE '%$search%'");
+	}
+while ($data=$brg->fetch_array()) { ?>
+                      <tr class="success">
+<font color="black">
 
-	$jumlah = $sql->num_rows;
-	?>
-	<div class="row-isi">
-		<table class="width">
-			<?php if ($jumlah > 0): ?>
-				<tr>
-					<td colspan="3"><center><?php echo "Menampilkan " .$search. " sebanyak " .$jumlah. " unit"; ?></center></td>
-				</tr>
-				<?php while ($r=$sql->fetch_array()) : ?>
-					<tr>
-						<td class="padding-left" colspan="3">
-							<p><a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>" class="href ref"><?php echo $r["nama_produk"]; ?>&nbsp;<?php echo $r['jenis']; ?></a></p>
+                       <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?><br>
+                        <?php echo $data['id_produk']; ?></b>
+                       </td>
+
+					<td colspan="" rowspan="" headers="">
+
+					<a  class="btn btn-warning" href="detailproduk.php?id=<?php echo $data['id_produk']; ?>"><span class="glyphicon glyphicon-check"></span>Detail</i></a></td>
+
+
+
+					<td></td>
+					<td ></td>
+
+                       <tr class="danger">
+                      <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="80Px">
+						<td colspan="" rowspan="" headers=""><b>Stock </b>: &nbsp;<?php echo $data['stock']; ?>
+							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
 						</td>
-					</tr>
-					<tr>
-						<td class="padding-left" width="128px">
-							<?php if (!empty($r['gambar'])): ?>
-								<a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>">
-								<img src="produk/'<?php echo $r['gambar']; ?>" width="120px" height="120px"></a>
-							<?php else : ?>
-								<a href="<?php echo $url ?>detailproduk.php?id_produk=<?php echo $r[0] ?>">
-								<img src="produk/" width="120px" height="120px"></a>
+						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>
+						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;<?php echo $data['harga']; ?><br>
+						<i class="glyphicon glyphicon-ok-sign"></i><?php if ($data['stock'] >= 1){
+	                           echo '<strong style="color: blue;">Stock Tersedia</strong>';	
+                                } else {
+	                           echo '<strong style="color: red;">Stock Habis</strong>';	
+                                }; ?></h3></td>
+                      </tr>
+                      </td>
+                       	<?php } ?>
+</div>
+<tr>
+			<td align="center" colspan="4">
+				<nav>
+					<ul class="pagination">
+						<?php
+							$tampil2="SELECT * FROM m_produk";
+							$hasil2=$conn->query($tampil2);
+							$jmldata=$hasil2->num_rows;
+							$jmlhalaman=ceil($jmldata/$batas);
+						?>
+
+						<?php if($halaman > 1): ?>
+							<?php $previous = $halaman-1; ?>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+						<?php else: ?>
+							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+						<?php endif ?>
+
+						<?php for($i=1;$i<=$jmlhalaman;$i++): ?>
+							<?php if($i>=($halaman-3) && $i <= ($halaman+3)): ?>
+								<?php if ($i != $halaman): ?>
+									<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$i" ?>"><?php echo $i; ?></a></li>
+								<?php else: ?>
+									<li class="active"><a><?php echo $i; ?></a></li>
+								<?php endif ?>
 							<?php endif ?>
-						</td>
-						<td style="vertical-align: top; font-size: 14px;" colspan="2" class="padding-right">
-							<?php echo $r["kategori"]; ?><br/>
-						</td>
-					</tr>
-					<tr>
-						<td align="right" style="font-size: x-large; color: #00008B;" colspan="2">
-							<?php if ($r['stock'] == 0): ?>
-								<a class="stock">STOK HABIS</a>			
-							<?php endif ?>
-							Rp. <?php echo $r['harga']; ?> &nbsp;
-						</td>
-						<td class="padding-right" width="80px">
-							<?php if ($r['stock'] == 0): ?>
-								<a>&nbsp;</a>
-							<?php else: ?>
-								<a href="../aplikasi/aksi.php?act=add&amp;id=<?php echo $r[0]; ?>" id="buy" class="button round">BELI</a>
-							<?php endif ?>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<hr>				
-						</td>
-					</tr>
-				<?php endwhile ?>
-			<?php else : ?>
-				<tr>
-					<td><center><h2><font color="#FF1919"><?php echo "Maaf, ".$search." tidak ditemukan"; ?></font></h2></center></td>
-				</tr>
-			<?php endif ?>
-			<tr>
-				<td colspan="3">
-					
-				</td>
-			</tr>
-		</table>		
-	</div>
-<?php 
-}
-?>
+						<?php endfor ?>
+
+						<?php if($halaman < $jmlhalaman): ?>
+							<?php $next = $halaman+1; ?>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+						<?php else: ?>
+							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+						<?php endif ?>
+
+					</ul>
+			   	</nav>
+			</td>
+		</tr>
+</tr>
+</tr>
+
+
+</table>

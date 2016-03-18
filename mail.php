@@ -7,25 +7,29 @@ error_reporting(0);
 include 'setting/server.php';
 
 if (isset($_POST['submit'])) {
-	$username =$_POST['username'];
-	$email = $_POST['email'];
-	$nama = $_POST['nama'];
+	$username =htmlspecialchars($_POST['username']);
+	$email = htmlspecialchars($_POST['email']);
+	$nama = htmlspecialchars($_POST['nama']);
 	$pass1= md5 (trim($_POST['pass1']));
 	$pass2= md5 (trim($_POST['pass2']));
 	
 
  		
  	if (trim($pass1) != trim($pass2)) {
- 		echo "Sepertinya Password Anda Tidak Sama";
- 		include_once 'daftar.php';
- 		die("Silahkan Coba Lagi");
+ 		echo "<script>window.alert('Password Harus sama');</script>";
+		echo "<script>window.location ='daftar.php';</script>";
+ 		//echo "Sepertinya Password Anda Tidak Sama";
+ 		//include_once 'daftar.php';
+ 		//die("Silahkan Coba Lagi");
 
  		
  		
  	}elseif (trim($username)=="") {
+ 		echo "<script>window.alert('Data Berhasil Di Hapus');</script>";
+		echo "<script>window.location ='../produk.php';</script>";
  		echo "Username Jangan Sampai Kosong";
- 		include_once 'daftar.php';
- 		die("Silahkan Coba Lagi");
+ 		//include_once 'daftar.php';
+ 		//die("Silahkan Coba Lagi");
 
  	}elseif (trim($email)=="") {
  		echo "Email Masih Kosong";

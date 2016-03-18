@@ -46,7 +46,9 @@ if (isset($_SESSION['role']))
 
 }
 if ($_SESSION['role'] == "3") {
-	echo "<script>window.location.assign('admin/admin.php')</script>";
+	echo "<script>window.alert('Folder Admin Sudah di remove');</script>";
+   echo "<script>window.location ='index.php';</script>";
+  //echo "<script>window.location.assign('admin/admin.php')</script>";
 }
 if (!isset($_SESSION['role']))
 {
