@@ -10,18 +10,45 @@ $tampil2="SELECT * FROM m_produk";
  <div id="page-wrapper" >
 
       	
-<form action="cari_barang.php" method="get">
-	<div class="input-group col-md-5 col-md-offset-7">
-		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-		<input type="text" class="form-control" placeholder="Cari barang di sini .." aria-describedby="basic-addon1" name="cari">	
-	</div>
-</form>
-<a style="margin-bottom:10px" href="print_barang_masuk.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a>
-Jumlah Barang : <?php echo $jmldata; ?>
 
+</form>
+<form action="" method="get">
+	<div class="input-group col-md-5 col-md-offset-7">
+		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-filter"></span></span>
+		<select type="submit" name="tanggal" class="form-control" onchange="this.form.submit()">
+			<option>By tanggal</option>
+			<?php 
+			$pil=$conn->query("SELECT distinct tgl_masuk from m_produk order by tgl_masuk desc");
+			while($p=$pil->fetch_array()){
+				?>
+				<option><?php echo $p['tgl_masuk'] ?></option>
+				<?php
+			}
+			?>
+		</select>
+		</div>
+<a style="margin-bottom:10px" href="print_barang_masuk.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak ALL Data</a>
+Jumlah Barang : <?php echo $jmldata; ?>
+<?php 
+if(isset($_GET['tanggal'])){
+	$tanggal=htmlspecialchars($_GET['tanggal']);
+	$tg="print_laporan_barang_masuk_BY.php?tanggal='$tanggal'";
+	?><a style="margin-bottom:10px" href="<?php echo $tg; ?>" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak By tanggal</a><?php
+}else{
+	$tg="print_laporan_barang_masuk_BY.php";
+}
+?>
+
+<br/>
+<?php 
+if(isset($_GET['tanggal'])){
+	echo "<h4>Menampilkan Data By Tanggal:  <a style='color:blue'> ". $_GET['tanggal']."</a></h4>";
+}
+?>
 <table class="table table-bordered">
 <div class="container">
 	<tr class="wrapper warning">
+	<th colspan="" rowspan="" headers="" scope="">No</th>
 	<th colspan="" rowspan="" headers="" scope="">Kode</th>
 <th colspan="" rowspan="" headers="" scope="">Nama Produk</th>
 <th colspan="" rowspan="" headers="" scope="">Qty</th>
@@ -30,28 +57,31 @@ Jumlah Barang : <?php echo $jmldata; ?>
 <th colspan="" rowspan="" headers="" scope="">Tanggal Masuk</th>
 
 	</tr>
-	<?php 
-	if(isset($_GET['cari'])){
-		$cari=htmlspecialchars($_GET['cari']);
-		$brg=$conn->query("SELECT * FROM m_produk WHERE nama_produk LIKE '%$cari%' OR kategori LIKE '%$cari%'");
+
+<?php
+
+if(isset($_GET['tanggal'])){
+		$tanggal=$_GET['tanggal'];
+		$tgl=$conn->query("SELECT * FROM m_produk WHERE tgl_masuk LIKE '$tanggal'");
 	}else{
-$brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
-
+		$tgl=$conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
 	}
+	$no=1;
+	while($b= $tgl->fetch_array()){
 
-	?>
+		?>
 
 <tr class="success">
-<?php while ($data=$brg->fetch_array()) {
 
- ?>
 	<tbody>
-		<tr class="danger"><td colspan="" rowspan="" headers=""><?php echo $data['0']; ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $data['1']; ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $data['9']; ?></td>
-<td colspan="" rowspan="" headers=""><?php echo $data['3']; ?></td>
-<td colspan="" rowspan="" headers="">Rp-,<?php echo number_format($data['12']); ?>,-</td>
-<td colspan="" rowspan="" headers="" class="success"><?php echo $data['10']; ?></td>
+		<tr class="danger">
+<td colspan="" rowspan="" headers=""><?php echo $no; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $b['id_produk']; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $b['nama_produk']; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $b['stock']; ?></td>
+<td colspan="" rowspan="" headers=""><?php echo $b['jenis']; ?></td>
+<td colspan="" rowspan="" headers="">Rp-,<?php echo number_format($b['harga']); ?>,-</td>
+<td colspan="" rowspan="" headers="" class="success"><?php echo $b['tgl_masuk']; ?></td>
 
 
 		</tr>
@@ -63,8 +93,9 @@ $brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,$batas");
 </div>
 </div>
 <?php 
-
+$no++;
 }
+
  ?>
  <tr>
 		<td colspan="4">Total Modal</td>

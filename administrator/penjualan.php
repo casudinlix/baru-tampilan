@@ -3,7 +3,10 @@ include "../menu/head_admin.php";
 include "../setting/server.php";
 
 include '../menu/tengah_admin.php';
-
+date_default_timezone_set('Asia/Jakarta');
+$tanggal= mktime(date("m"),date("d"),date("Y"));
+$tglsekarang = date("Y-m-d", $tanggal);
+$tanggal1 = date('d/m/Y H:i:s');
 
  ?>
 <div id="page-wrapper" >
@@ -29,9 +32,9 @@ include '../menu/tengah_admin.php';
 <br/>
 <?php 
 if(isset($_GET['tanggal'])){
-	$tanggal=$_GET['tanggal'];
+	$tanggal=htmlspecialchars($_GET['tanggal']);
 	$tg="print_penjualan_kasir.php?tanggal='$tanggal'";
-	?><a style="margin-bottom:10px" href="<?php echo $tg ?>" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a><?php
+	?><a style="margin-bottom:10px" href="<?php echo $tg; ?>" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak</a><?php
 }else{
 	$tg="print_penjualan_kasir.php";
 }
@@ -54,19 +57,16 @@ if(isset($_GET['tanggal'])){
 		<th class="success">Harga Terjual /pc</th>
 
 		<th class="success">Jumlah</th>
-		
-		
 	</tr>
-<?php 
+<?php
 if(isset($_GET['tanggal'])){
 		$tanggal=$_GET['tanggal'];
-		$brg=$conn->query("SELECT * FROM transaksi, m_produk WHERE  status='Lunas' AND transaksi.id_produk=m_produk.id_produk ORDER BY tanggal desc");
+		$brg=$conn->query("SELECT * FROM transaksi, m_produk WHERE  transaksi.id_produk=m_produk.id_produk  AND status='Lunas' AND tanggal LIKE '$tanggal'");
 	}else{
-		$brg=$conn->query("SELECT * FROM transaksi, m_produk WHERE  status='Lunas' AND transaksi.id_produk=m_produk.id_produk ORDER BY tanggal desc");
+		$brg=$conn->query("SELECT * FROM transaksi, m_produk WHERE  transaksi.id_produk=m_produk.id_produk  AND status='Lunas'");
 	}
 	$no=1;
 	while($b= $brg->fetch_array()){
-
 		?>
 		<tr>
 			<td class="warning"><?php echo $no++ ?></td>
@@ -108,7 +108,7 @@ if(isset($_GET['tanggal'])){
 					
 						<div class="form-group">
 							<label>Tanggal</label>
-							<input name="tgl" type="date" class="form-control"  autocomplete="OFF" required="">
+							<input name="tgl" type="date" class="form-control"  autocomplete="OFF" value="<?php echo $tglsekarang; ?>" readonly required="">
 						</div>
 						<div class="form-group">
 							<label>Produk</label>

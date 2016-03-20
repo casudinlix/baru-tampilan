@@ -2,7 +2,7 @@
 include_once '../setting/server.php';
 include '../menu/head_admin.php';
 include '../menu/tengah_admin.php';
-
+error_reporting(0);
 $id = $_GET['id'];
 //$query = $conn->query("SELECT * FROM order_user, m_produk WHERE username='$idt'AND order_user.id_produk=m_produk.id_produk ");
 
@@ -118,8 +118,13 @@ echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_
  			if ($data['status']=="Barang Sudah Diterima") {
  				echo '<strong style="color: Blue;">Transaksi Done</strong>';
  				echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
+ 				
 
  			}else{
+ 				if ($data['status']=="Lunas") {
+ 		echo "<strong style='color: red;'>Sudah Dibayar Kasir</strong>&nbsp;";
+ 		echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_order.php'>Kembali</a></i>";
+}else{
 ?>
 
 <td><i class="btn btn-warning glyphicon glyphicon-check" ><a href="aksi/aksi_order.php?act=approve&amp;id=<?php echo $id; ?>" onclick="return confirm('Apakah anda yakin Approve Order ini?')">Approve</a></i></td>
@@ -133,7 +138,7 @@ echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_
 }
 	}
 }
-	
+	}
 	?>
 
 </div>

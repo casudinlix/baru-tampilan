@@ -27,13 +27,13 @@ $pdf->Line(1,3.2,40.5,3.2);
 $pdf->SetLineWidth(0);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',30);
-$pdf->Cell(40,0.3,"Laporan Penjualan Kasir",0,30,'C');
+$pdf->Cell(40,0.3,"Laporan Penjualan by STATUS",0,30,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','i',10);
 $pdf->Cell(5,0.19,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
 $pdf->ln(0.5);
 $pdf->ln(1);
-$pdf->Cell(6,0.7,"Laporan Penjualan pada : ".$_GET['tanggal'],0,0,'C');
+$pdf->Cell(6,0.7,"Laporan Status Penjualan : ".$_GET['status'],0,0,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');
@@ -43,13 +43,14 @@ $pdf->Cell(5, 0.8, 'Nama Barang', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Nama Pembeli', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Harga', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Qty', 1, 0, 'C');
+$pdf->Cell(4.5, 0.8, 'Status', 1, 0, 'C');
 $pdf->SetFont('Arial','',10);
 //$pdf->ln(0);
 $rp="Rp-.";
 //$rp=number_format($dataPro['harga']);
-$tanggal=$_GET['tanggal'];
+$status=$_GET['status'];
 
-$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE status='Lunas' AND transaksi.id_produk=m_produk.id_produk AND tanggal=".$tanggal);
+$queryTrs = $conn->query("SELECT * FROM transaksi,m_produk WHERE transaksi.id_produk=m_produk.id_produk and status=".$status);
 $no=1;
 $pdf->ln(0.8);
 
@@ -62,6 +63,7 @@ $pdf->ln(0.8);
 	$pdf->Cell(4.5, 0.8, $dataTrs['username'] , 1, 0, 'C');
 	$pdf->Cell(4.5, 0.8, $rp.number_format($dataTrs['harga']) , 1, 0, 'C');
 	$pdf->Cell(4.5, 0.8, $dataTrs['qty'] , 1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $dataTrs['status'] , 1, 0, 'C');
 	
 	
 $pdf->ln(0.8);

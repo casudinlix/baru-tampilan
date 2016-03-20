@@ -26,7 +26,7 @@ $order = "id_order";
 
 $pos = "asc";
 
-$dataOrd = $conn->query("SELECT * FROM transaksi  ORDER BY $order $pos LIMIT $posisi,$batas");
+$dataOrd = $conn->query("SELECT distinct id_order,username,tanggal,status FROM transaksi   ORDER BY $order $pos LIMIT $posisi,$batas");
 
 
 ?>

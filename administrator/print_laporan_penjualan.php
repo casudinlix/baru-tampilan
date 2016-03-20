@@ -38,28 +38,28 @@ $pdf->Cell(5, 0.8, 'nomor Order', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'Kode Produk', 1, 0, 'C');
 $pdf->Cell(1, 0.8, 'Qty', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Harga', 1, 0, 'C');
-$pdf->Cell(4.5, 0.8, 'Type Order', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Type Order', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Biaya Kirim', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'Tanggal Order', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'Status', 1, 2, 'C');
 $pdf->SetFont('Arial','',10);
 //$pdf->ln(0);
-$rp="Rp.-";
+$rp="Rp-.";
 //$rp=number_format($dataPro['harga']);
 
-$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' AND transaksi.id_produk=m_produk.id_produk");
+$queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE transaksi.id_produk=m_produk.id_produk");
 $no=1;
 $pdf->ln(0);
 
 			while($dataTrs = $queryTrs->fetch_array()){
-				$pendapatan =$conn->query("SELECT sum(harga) AS total FROM m_produk,transaksi WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' AND transaksi.id_produk=m_produk.id_produk");
+				$pendapatan =$conn->query("SELECT sum(harga) AS total FROM m_produk,transaksi WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' OR status='lunas' AND transaksi.id_produk=m_produk.id_produk");
 				$data=$pendapatan->fetch_array();
 	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
 	$pdf->Cell(5, 0.8, $dataTrs['id_order'] , 1, 0, 'C');
 	$pdf->Cell(5, 0.8, $dataTrs['id_produk'] , 1, 0, 'C');		
 	$pdf->Cell(1, 0.8, $dataTrs['qty'] , 1, 0, 'C');
 	$pdf->Cell(4.5, 0.8, $rp.number_format($dataTrs['harga']) , 1, 0, 'C');
-	$pdf->Cell(4.5, 0.8, $dataTrs['type_order'] , 1, 0, 'C');
+	$pdf->Cell(5, 0.8, $dataTrs['type_order'] , 1, 0, 'L');
 	$pdf->Cell(4.5, 0.8,$rp. number_format($dataTrs['biaya']) , 1, 0, 'C');
 	$pdf->Cell(6, 0.8, $dataTrs['tanggal'] , 1, 0, 'C');
 	$pdf->Cell(6, 0.8, $dataTrs['status'] , 1, 0, 'C');

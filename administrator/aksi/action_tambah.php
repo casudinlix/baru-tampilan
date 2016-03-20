@@ -5,17 +5,17 @@ include 'fungsi.php';
 
 $id =$_GET['id'];
 	
-	$nama = $_POST['nama'];
-	$jenis = $_POST['jenis'];
+	$nama = htmlspecialchars($_POST['nama']);
+	$jenis = htmlspecialchars($_POST['jenis']);
 	$kategori = $_POST['kategori'];
 	$merk = $_POST['merk'];
-	$deskripsi = $_POST['deskripsi'];
-	$qtymin = $_POST['qtymin'];
-	$qtymax = $_POST['qtymax'];
-	$berat = $_POST['berat'];
+	$deskripsi = htmlspecialchars($_POST['deskripsi']);
+	$qtymin = htmlspecialchars($_POST['qtymin']);
+	$qtymax = htmlspecialchars($_POST['qtymax']);
+	$berat = htmlspecialchars($_POST['berat']);
 	$tgl_masuk = $_POST['tgl'];
-	$harga =$_POST['harga'];
-	$stock = $_POST['stock'];
+	$harga =htmlspecialchars($_POST['harga']);
+	$stock = htmlspecialchars($_POST['stock']);
 	//$diskon =$_POST['diskon'];
 $foto= $_FILES['gambar']['name'];
 $acak = rand(1,99);

@@ -26,14 +26,13 @@ $pdf->Line(1,3.2,28.5,3.2);
 $pdf->SetLineWidth(0);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',14);
-$pdf->Cell(25.5,0.7,"Laporan Data Barang Masuk",0,10,'C');
+$pdf->Cell(25.5,0.7,"Laporan Data ALL Barang Masuk",0,10,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(5,0.7,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
 $pdf->ln(1);
+$q=$conn->query("SELECT sum(harga) as total from m_produk ");
 
-$q=$conn->query("SELECT sum(harga) as total from m_produk");
-// select sum(total_harga) as total from barang_laku where tanggal='$tanggal'
 while($total=$q->fetch_array()){
 	$pdf->Cell(5, 0.8, "Total Modal", 0, 0,'L');		
 	$pdf->Cell(4.5, 0.8, "Rp. ".number_format($total['total'])." ,-", 0, 0,'C');	

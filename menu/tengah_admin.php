@@ -96,9 +96,7 @@ Selamat Datang <br></td>
                     </li>
 
 
-                    <li>
-                        <a href="Admin.html"><i class="glyphicon glyphicon-eye-open"></i>Admin <span class="badge"></span></a>
-                    </li>
+                    
                     <li>
                         <a href="laporan.php"><i class="glyphicon glyphicon-book"></i>Laporan <span class="badge"></span></a>
                     </li>
