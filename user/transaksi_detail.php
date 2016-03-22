@@ -113,7 +113,7 @@ $status = $data['status'];
 
            }else{
            	?>
-           	<td><a href="print.php?id_order=<?php echo $id; ?>"> <i class="glyphicon glyphicon-print"></i>Klik Untuk Mencetak Struk</a></td><br>
+           	<td><a href="print.php?id_order=<?php echo $id; ?>" target="_blank"> <i class="glyphicon glyphicon-print"></i>Klik Untuk Mencetak Struk</a></td><br>
 <?php
            }
            }

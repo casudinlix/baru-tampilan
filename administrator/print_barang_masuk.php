@@ -34,7 +34,7 @@ $pdf->ln(1);
 $q=$conn->query("SELECT sum(harga) as total from m_produk ");
 
 while($total=$q->fetch_array()){
-	$pdf->Cell(5, 0.8, "Total Modal", 0, 0,'L');		
+	$pdf->Cell(5, 0.8, "Total Value", 0, 0,'L');		
 	$pdf->Cell(4.5, 0.8, "Rp. ".number_format($total['total'])." ,-", 0, 0,'C');	
 }
 $pdf->ln(1);

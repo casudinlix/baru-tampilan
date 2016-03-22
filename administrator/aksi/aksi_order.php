@@ -1,7 +1,7 @@
 <?php 
 include_once '../../setting/server.php';
 include_once '../../setting/session.php';
-
+error_reporting(0);
 	if(isset($_GET['id'])) {
 	$id = $_GET['id'];
 } else {

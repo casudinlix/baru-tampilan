@@ -32,6 +32,13 @@ $pdf->ln(1);
 $pdf->SetFont('Arial','i',10);
 $pdf->Cell(5,0.19,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
 $pdf->ln(0.5);
+$q=$conn->query("SELECT sum(harga) as total from m_produk,transaksi WHERE transaksi.id_produk=m_produk.id_produk " );
+
+while($total=$q->fetch_array()){
+	$pdf->Cell(4, 0.8, "Total Value:", 0, 0,'L');
+	$pdf->Cell(2, 0.8, "Rp. ".number_format($total['total'])." ,-", 0, 0,'L');	
+}
+$pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'nomor Order', 1, 0, 'C');
@@ -67,14 +74,6 @@ $pdf->ln(0.8);
 $no++;
 
 }
-$pdf->SetFont("Times","B",15);
-		$pdf->ln(1);
-		$pdf->Cell(6, 0.8,'Total Pendapatan' , 0, 0, 'C');
-$pdf->ln(1);
-		//$pdf->Cell(6, 0.8,$rp , 0, 0, 'C');
-$pdf->Cell(6, 0.8,'Rp-,' , 0, 0, 'C');
-$pdf->ln(0.5);
-			$pdf->Cell(6, 0.8, number_format($data['total']) , 0, 0, 'C');
 $pdf->Output("laporan_penjualan(cas).pdf","I");
 
 ?>

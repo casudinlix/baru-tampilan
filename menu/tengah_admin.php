@@ -55,7 +55,7 @@ $idt = $_SESSION['email'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="administrator.php">
                         <img src="<?php echo $host; ?>/img/ico1.jpg" height="45px" class="img-circle" />
 
                     </a>
@@ -79,7 +79,7 @@ Selamat Datang <br></td>
  ?>
  <br>
 <img class="img-circle" src="foto/<?php echo $_SESSION['foto']; ?>" width="70x">
- [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off"></i></a> ]
+ [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off">Logout</i></a> ]
  
     
 

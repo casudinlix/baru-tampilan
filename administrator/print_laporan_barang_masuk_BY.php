@@ -8,8 +8,8 @@ $tanggal=$_GET['tanggal'];
 $pdf->SetMargins(1,1,1);
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont("Arial","B",20);
-$pdf->Image("../img/ico.jpg",2,1,2,2);
+	$pdf->SetFont("Arial","B",20);
+	$pdf->Image("../img/ico.jpg",2,1,2,2);
 $pdf->SetX(4);
 $pdf->Cell(6);
 $pdf->MultiCell(10.5,0.5,'Wijaya Motor',0,'L');
@@ -38,8 +38,8 @@ $pdf->ln(1);
 $q=$conn->query("SELECT sum(harga) as total from m_produk WHERE tgl_masuk=".$tanggal );
 
 while($total=$q->fetch_array()){
-	$pdf->Cell(4, 0.8, "Total Modal:", 0, 0,'L');
-	$pdf->Cell(2, 0.8, "Rp. ".number_format($total['total'])." ,-", 0, 0,'L');	
+	$pdf->Cell(4, 0.8, "Total Value:", 0, 0,'L');
+	$pdf->Cell(2, 0.8, "Rp-. ".number_format($total['total'])." ,-", 0, 0,'L');	
 }
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
@@ -53,7 +53,7 @@ $pdf->Cell(5, 0.8, 'STOCK', 1, 0, 'C');
 //$pdf->Cell(4.5, 0.8, 'Status', 1, 0, 'C');
 $pdf->SetFont('Arial','',10);
 //$pdf->ln(0);
-$rp="Rp-.";
+$rp="Rp.";
 //$rp=number_format($dataPro['harga']);
 
 

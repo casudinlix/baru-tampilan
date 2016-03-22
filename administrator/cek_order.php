@@ -35,6 +35,26 @@ $row12 =$data->num_rows;
                   </div>
                 </div>
               </div>
+              <form action="" method="get">
+  <div class="input-group col-md-5 col-md-offset-7">
+    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-filter"></span></span>
+    <select type="submit" name="status" class="form-control" onchange="this.form.submit()">
+      <option>By Status</option>
+      <?php 
+      $pil=$conn->query("SELECT distinct status from transaksi");
+      while($p=$pil->fetch_array()){
+        ?>
+        <option><?php echo $p['status'] ?></option>
+        <?php
+      }
+      ?>
+    </select>
+    </div>
+    <?php 
+if(isset($_GET['tanggal'])){
+  echo "<h4>Menampilkan Data By Tanggal:  <a style='color:blue'> ". $_GET['tanggal']."</a></h4>";
+}
+?>
               <div class="panel-body">
                   <thead class="warning">
                     <tr>
@@ -49,24 +69,32 @@ $row12 =$data->num_rows;
                     </tr> 
                   </thead>
                   <tbody>
-                  <?php while ( $row = $dataOrd->fetch_array()) {
+                  <?php
 
-				
-			?>
-                          <tr class="info">
+if(isset($_GET['status'])){
+    $status=$_GET['status'];
+    $status1=$conn->query("SELECT * FROM transaksi WHERE status LIKE '$status'");
+  }else{
+  $status1= $conn->query("SELECT * FROM transaksi   ORDER BY $order $pos LIMIT $posisi,$batas");
+  }
+  $no=1;
+  while($b=$status1->fetch_array()){
+
+    ?>
+             <tr class="info">
 
 
                             <td align="center">
                               
-                              <a class="btn btn-danger" href="aksi/aksi_order.php?act=hapus&amp;id=<?php echo $row['id_order'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"title="">Hapus<em class="glyphicon glyphicon-trash"></em></a>
+                              <a class="btn btn-danger" href="aksi/aksi_order.php?act=hapus&amp;id=<?php echo $b['id_order'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"title="">Hapus<em class="glyphicon glyphicon-trash"></em></a>
                             </td>
 
                             
-                            <td><a href="order.php?id=<?php echo $row['id_order']; ?>"><?php echo $row['id_order']; ?></a></td>
-                            <td><?php echo $row['username']; ?></td>
-                            <td><?php echo $row['tanggal']; ?></td>
+                            <td><a href="order.php?id=<?php echo $b['id_order']; ?>"><?php echo $b['id_order']; ?></a></td>
+                            <td><?php echo $b['username']; ?></td>
+                            <td><?php echo $b['tanggal']; ?></td>
 
-                            <td class="warning"><?php echo $row['status']; ?></td>
+                            <td class="warning"><?php echo $b['status']; ?></td>
                           </tr>
                         </tbody>
                         <?php

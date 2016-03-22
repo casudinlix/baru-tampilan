@@ -12,17 +12,10 @@ include '../menu/tengah_admin.php';
 <table class="table table-bordered">
 
  <body>
- <div id="page-wrapper" align="center">
-
-     
- 
-<ul class="unstyled">
-<li class="">
+ <div id="page-wrapper" align="left">
                         <H1><a href="barang_masuk.php" class="btn btn-info"><i class="glyphicon glyphicon-circle-arrow-down"></i>Data Barang Masuk</H1></a>
-                    </li>
-                    <li class="active-link">
                         <h1><a href="laporan_penjualan.php" class="btn btn-danger"><i class="glyphicon glyphicon-circle-arrow-up"></i>Penjualan </h1></a>
-                    </li>
-                    
-                    </div>
+                    <img src="../assets/img/pgm-fi.png" alt="" align="left" class="img-circle">
+    </div>
+
                     </body>

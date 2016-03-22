@@ -4,7 +4,7 @@
 <div class="footer">
 	<div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2016 bengkel.com || Design by: Yudis</a>
+                    &copy;  2016 bengkel.com || Design by: Kelompok 4</a>
                 </div>
             </div>
         </div>

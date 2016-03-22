@@ -74,7 +74,7 @@ $idt = $_SESSION['email'];
 
 Selamat Datang <br><img src="foto/<?php echo $_SESSION['foto']; ?>" alt="" class="image-circle" width="70x"><br></td>
  <?php echo $_SESSION['nama']; ?>
- [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off"></i></a> ]
+ [ <a href="<?php echo $host; ?>/logout.php" onclick="return confirm('Apakah anda yakin Keluar?')"><i class="glyphicon glyphicon-off"></i>Logout</a> ]
  <li class="active-link">
                         <a href="user.php" ><i class="glyphicon glyphicon-home "></i>Home <span class="badge"></span></a>
 

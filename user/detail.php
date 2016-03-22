@@ -35,7 +35,7 @@ $row=$query->fetch_assoc();
                         <td></td>
                         <td size="200"><h3><font color="black">Harga</h3></td>
                         <td><h3>:</h3></td>
-						<td><div><h3><font color="black"><b>Rp.<?php echo $row['harga'];?></b></h3></div></td>
+						<td><div><h3><font color="black"><b>Rp.<?php echo number_format($row['harga']);?></b></h3></div></td>
                         </tr>
                         <tr>
                         <td></td>
@@ -64,8 +64,16 @@ $row=$query->fetch_assoc();
 </div>
 
 </table>
+
 <a class="btn btn-info" href="<?php echo $host; ?>/user/user.php" title="">Kembali</a>
-<a class="btn btn-success" href="aksi.php?act=add&amp;id=<?php echo $row['id_produk'];?>" title="">Beli</a>
+<?php if ($row['stock'] <= 1){
+                               echo '<strong style="color: red;">Stock hasbis</strong>'; 
+                                } else {
+                                    ?>
+                                    <a class="btn btn-success" href="aksi.php?act=add&amp;id=<?php echo $row['id_produk'];?>" title="">Beli</a>
+
+                                    <?php
+                                }; ?></h3></div></td>
  </body>
  <?php include '../menu/bawah_admin.php'; ?>
  </strong>

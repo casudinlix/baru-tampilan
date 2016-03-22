@@ -131,7 +131,7 @@ echo "<i class='btn btn-success glyphicon glyphicon-chevron-left' ><a href='cek_
 <i class="btn btn-success glyphicon glyphicon-chevron-left" ><a href='cek_order.php'>Kembali</a></i>
 
 <td>
-<i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>">Print</a></i></td>
+<i class="btn btn-info glyphicon glyphicon-print"><a href="<?php echo $host; ?>/print.php?id_order=<?php echo $id; ?>&amp;username=<?php echo $data['username'] ?>" target="_blank">Print</a></i></td>
 
 <?php
 }

@@ -54,7 +54,7 @@ while ($data=$brg->fetch_array()) { ?>
 
 
 					<td><a class="btn btn-success" href="edit.php?id=<?php echo $data['id_produk']; ?>" title=""><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-					<td ><i class="">&nbsp;<a class="btn btn-danger"href="aksi/action_hapus.php?id=<?php echo $data['id_produk']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" title=""><span class="glyphicon glyphicon-remove-sign"></span>Hapus</a></i></td>
+					<td ></td>
 
                        <tr class="danger">
                       <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="65px">
@@ -62,7 +62,7 @@ while ($data=$brg->fetch_array()) { ?>
 							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
 						</td>
 						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>
-						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;<?php echo $data['harga']; ?><br>
+						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;<?php echo number_format($data['harga']); ?><br>
 						<i class="glyphicon glyphicon-ok-sign"></i><b>Stock</b>&nbsp;<?php echo $data['stock']; ?></td>
                       </tr>
                       </td>

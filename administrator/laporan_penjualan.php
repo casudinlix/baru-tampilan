@@ -156,11 +156,11 @@ $subtotal = $b['harga'] * $b['qty'];
 } ?>
 <td align="center" colspan="9" class="warning">
 <?php
-$pendapatan =$conn->query("SELECT sum(harga) AS total FROM m_produk,transaksi WHERE status='Barang sudah dikirim' OR status='Barang Sudah Diterima' OR status='Lunas' AND transaksi.id_produk=m_produk.id_produk");
+$pendapatan =$conn->query("SELECT sum(harga) AS total FROM m_produk,transaksi WHERE transaksi.id_produk=m_produk.id_produk");
 				$data=$pendapatan->fetch_array();
  ?>
 				<tr class="info">
-		<td colspan="8">Total Pendapatan: <i class="glyphicon glyphicon-thumbs-up"></i> <b> Rp.<?php echo number_format($data['total']);?>-,</b>
+		<td colspan="8">Total Value: <i class="glyphicon glyphicon-thumbs-up"></i> <b> Rp.<?php echo number_format($data['total']);?>-,</b>
 </div>
 </div>
 

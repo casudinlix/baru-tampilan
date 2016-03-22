@@ -40,7 +40,7 @@ while ($data=$brg->fetch_array()) { ?>
 
                        <tr class="danger">
                       <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="80Px">
-						<td colspan="" rowspan="" headers=""><b>Stock </b>: &nbsp;<?php echo $data['stock']; ?>
+						<td colspan="" rowspan="" headers="">
 							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
 						</td>
 						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>

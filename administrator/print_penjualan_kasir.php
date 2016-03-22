@@ -45,7 +45,7 @@ $pdf->Cell(4.5, 0.8, 'Harga', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Qty', 1, 0, 'C');
 $pdf->SetFont('Arial','',10);
 //$pdf->ln(0);
-$rp="Rp-.";
+$rp="Rp.";
 //$rp=number_format($dataPro['harga']);
 $tanggal=$_GET['tanggal'];
 

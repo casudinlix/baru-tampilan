@@ -8,51 +8,53 @@
  </head>
  <body>
  	<div class="container" id="Katalog" name="Katalog">
-		<br>
-			
-				<br>
 				<h1 class="centered">KATALOG</h1>
 				<hr>
 				<br><div class="btn-group navbar-right">
 				 <form class="navbar-form navbar-right" role="search">
   <div class="form-group">
+<table class="table table-bordered">
+  <?php
+  include 'halaman.php';
+$brg = $conn->query("SELECT * FROM m_produk LIMIT $posisi,3");
+while ($data=$brg->fetch_array()) { ?>
+                      <tr class="success">
+<font color="black">
 
-  
-  
-  
-</div>
-	</div>
-			<!-- /row -->
-			<div class="container">
-			
+  <td colspan="" rowspan="" headers="" ><b><?php echo $data['nama_produk'] ?><br>
+                        <?php echo $data['id_produk']; ?></b>
+                       </td>
 
-			<div class="row">
-	                <?php
-                    include 'halaman.php';
-				while ($data=$katalog->fetch_array()) {
-					$harga=$data['harga'];
-					$stock =$data['stock'];
-				
-                    ?>
-        		<div class="span4">
-          			<div class="icons-box">
-                        <div class="title"><h3><?php echo $data['nama_produk']; ?></h3></div>
-                        <img src="produk/<?php echo $data['gambar']; ?>" class="img-circle" />
-						<div><h3>Rp.<?php echo number_format($harga);?></h3></div>
-					<!--	<p>
-						
-						</p> -->
-						<div class="clear"><a href="detailproduk.php?id=<?php echo $data['id_produk'];?>" class="btn btn-lg btn-danger">Detail</a> <a href="detailproduk.php?id=<?php echo $data['id_produk'];?>" class="btn btn-lg btn-success">Beli &raquo;</a></div>
+					<td colspan="" rowspan="" headers="">
+
+					<a  class="btn btn-warning" href="detailproduk.php?id=<?php echo $data['id_produk']; ?>"><span class="glyphicon glyphicon-check"></span>Detail</i></a></td>
+<td colspan="" rowspan="" headers="">
+
+					<a  class="btn btn-info" href="user/user.php?id=<?php echo $data['id_produk']; ?>"><span class="glyphicon glyphicon-check"></span>Beli</i></a></td>
+
+
+
+					<td></td>
 					
-                    </div>
-        		</div>
-                <?php   
-              }
-              
-              
-              ?>
-              <tr>
-			<td align="right" colspan="3">
+
+                       <tr class="danger">
+                      <td> <img src="<?php echo $host;?>/produk/<?php echo $data['gambar'] ?>" class="img-circle" alt="" width="100Px">
+						<td colspan="" rowspan="" headers="">
+							<br><b>Berat :&nbsp;</b><?php echo $data['berat']; ?>/Kg
+						</td>
+						<td colspan="" rowspan="" headers=""><b>Deskripsi</b> : &nbsp;<?php echo $data['deskripsi']; ?></td>
+						<td colspan="" rowspan="" headers=""><b>Harga</b> :&nbsp;Rp.-<?php echo number_format($data['harga']); ?><br>
+						<i class="glyphicon glyphicon-ok-sign"></i><?php if ($data['stock'] >= 1){
+	                           echo '<strong style="color: blue;">Stock Tersedia</strong>';	
+                                } else {
+	                           echo '<strong style="color: red;">Stock Habis</strong>';	
+                                }; ?></h3></td>
+                      </tr>
+                      </td>
+                       	<?php } ?>
+</div>
+<tr>
+			<td align="center" colspan="4">
 				<nav>
 					<ul class="pagination">
 						<?php
@@ -64,7 +66,7 @@
 
 						<?php if($halaman > 1): ?>
 							<?php $previous = $halaman-1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 						<?php endif ?>
@@ -85,12 +87,13 @@
 						<?php else: ?>
 							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						<?php endif ?>
+
 					</ul>
 			   	</nav>
 			</td>
 		</tr>
+</tr>
+</tr>
 
-<hr>
-				  </form>
- </body>
- </html>
+
+</table>

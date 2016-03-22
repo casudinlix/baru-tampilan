@@ -6,6 +6,8 @@ include '../halaman.php';
 $tampil2="SELECT * FROM m_produk";
 							$hasil2=$conn->query($tampil2);
 							$jmldata=$hasil2->num_rows;
+							$x1=$conn->query("SELECT sum(stock) as sisa from m_produk");	
+			$xx1=$x1->fetch_array();
  ?>
  <div id="page-wrapper" >
 
@@ -28,7 +30,8 @@ $tampil2="SELECT * FROM m_produk";
 		</select>
 		</div>
 <a style="margin-bottom:10px" href="print_barang_masuk.php" target="_blank" class="btn btn-default pull-right"><span class='glyphicon glyphicon-print'></span>  Cetak ALL Data</a>
-Jumlah Barang : <?php echo $jmldata; ?>
+Jumlah Barang : <b><?php echo $jmldata; ?></b><br>
+Jumlah QTY :<b><?php echo $xx1['sisa']; ?></b>
 <?php 
 if(isset($_GET['tanggal'])){
 	$tanggal=htmlspecialchars($_GET['tanggal']);
@@ -98,12 +101,14 @@ $no++;
 
  ?>
  <tr>
-		<td colspan="4">Total Modal</td>
+		<td colspan="5"><b>Total Value</b></td>
 		<td>			
 		<?php 
 		
 			$x=$conn->query("SELECT sum(harga) as total from m_produk");	
 			$xx=$x->fetch_array();
+			$x1=$conn->query("SELECT sum(stock) as sisa from m_produk");	
+			$xx1=$x1->fetch_array();
 			?>
 			<b> Rp.<?php echo number_format($xx['total'])?>-,</b>		
 		
@@ -111,7 +116,7 @@ $no++;
 
 	</tr>
  <tr>
-			<td align="center" colspan="6">
+			<td align="center" colspan="7">
 				<nav>
 					<ul class="pagination">
 						<?php

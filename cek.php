@@ -5,7 +5,7 @@ include 'setting/server.php';
 session_start();
 
 if (isset($_POST['submit'])=='login') {
-  $username=$_POST['username'];
+  $username=htmlspecialchars($_POST['username']);
   $pass=md5($_POST['pass']);
 
   $cari = $conn->query("SELECT * FROM login WHERE username='$username' AND password='$pass'");

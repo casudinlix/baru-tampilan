@@ -35,7 +35,7 @@ $pdf->ln(0.5);
 
 $pdf->SetFont('Arial','B',10);
 //$pdf->ln(0);
-$rp="Rp.-";
+$rp="Rp-.";
 //$rp=number_format($dataPro['harga']);
 $id_order=$_GET['id_order'];
 $queryTrs = $conn->query("SELECT * FROM transaksi, m_produk WHERE id_order='$id_order' AND transaksi.id_produk=m_produk.id_produk");
