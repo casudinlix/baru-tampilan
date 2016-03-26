@@ -73,7 +73,7 @@ if(isset($_GET['tanggal'])){
 
 if(isset($_GET['status'])){
     $status=$_GET['status'];
-    $status1=$conn->query("SELECT * FROM transaksi WHERE status LIKE '$status'");
+    $status1=$conn->query("SELECT * FROM transaksi WHERE status LIKE '$status' ORDER BY id_order DESC ");
   }else{
   $status1= $conn->query("SELECT * FROM transaksi   ORDER BY $order $pos LIMIT $posisi,$batas");
   }

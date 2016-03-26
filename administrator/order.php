@@ -32,13 +32,16 @@ $dataOrd =$queryOrd->fetch_array();
 
 <td colspan="8" rowspan="" headers=""></td>
 <b>Data pelanggan <pre><?php echo $data['username']; ?></b>
-<br><b>Nomor Order :<?php echo $id = $_GET['id']; ?>
+<br><b>Nomor Order :<?php echo $id = $_GET['id']; ?><br>
+<?php echo $data['tanggal']; ?>
 						<td></td>
 
 					</tr>
 					</td>
 
-</b></pre>
+</b>
+
+</pre>
 
 <tr>
 			<th width="25px">No</th>

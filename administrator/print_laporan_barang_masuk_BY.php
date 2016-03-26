@@ -3,7 +3,7 @@
 include "../setting/server.php";
 require ("../pdf/fpdf.php");
 
-$pdf = new FPDF("L","cm","A3");
+$pdf = new FPDF("l","cm","A3");
 $tanggal=$_GET['tanggal'];
 $pdf->SetMargins(1,1,1);
 $pdf->AliasNbPages();

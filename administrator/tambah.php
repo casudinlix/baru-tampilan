@@ -34,7 +34,7 @@ $tanggal1 = date('d/m/Y H:i:s');
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">Gambar</label>
   <div class="col-md-4">
-    <input id="gambar" name="gambar" class="input-file " type="file">
+    <input id="gambar" name="gambar" class="input-file " type="file" required="">
   </div>
 </div>
 <div class="form-group">

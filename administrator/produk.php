@@ -71,7 +71,7 @@ while ($data=$brg->fetch_array()) { ?>
 <tr>
 			<td align="center" colspan="4">
 				<nav>
-					<ul class="pagination">
+					<ul class="pagination pagination-centered">
 						<?php
 							$tampil2="SELECT * FROM m_produk";
 							$hasil2=$conn->query($tampil2);
@@ -81,9 +81,9 @@ while ($data=$brg->fetch_array()) { ?>
 
 						<?php if($halaman > 1): ?>
 							<?php $previous = $halaman-1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$previous&by=$by" ?>" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
 						<?php else: ?>
-							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li class="disabled"><a href="" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
 						<?php endif ?>
 
 						<?php for($i=1;$i<=$jmlhalaman;$i++): ?>
@@ -98,9 +98,9 @@ while ($data=$brg->fetch_array()) { ?>
 
 						<?php if($halaman < $jmlhalaman): ?>
 							<?php $next = $halaman+1; ?>
-							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next" ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							<li><a href="<?php echo "$_SERVER[PHP_SELF]?halaman=$next" ?>" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
 						<?php else: ?>
-							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							<li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
 						<?php endif ?>
 
 					</ul>

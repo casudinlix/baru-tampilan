@@ -28,6 +28,13 @@ $row = $sql->fetch_array();
     
   </div>
 </div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="kode">Image</label>  
+  <div class="col-md-4">
+<img src="../produk/<?php echo $row['gambar']; ?>" alt="" class="img-circle" width="90px">
+<input type="file" name="gambar" value="" placeholder="" required="">    
+  </div>
+</div>
 
 <!-- Text input-->
 <div class="form-group">

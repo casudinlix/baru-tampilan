@@ -39,7 +39,7 @@ include 'menu/h1.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Email</label>  
   <div class="col-md-4">
-  <input id="textinput" name="email" type="text" placeholder="Email @" class="form-control input-md" required="">
+  <input id="textinput" name="email" type="email" placeholder="Email @" class="form-control input-md" required="">
     
   </div>
 </div>

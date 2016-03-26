@@ -9,7 +9,7 @@ $qty = $_POST['qty'];
 //$harga =$_POST['harga'];
 $email =$_POST['email'];
 include 'fungsi.php';
-$time = date("Y-m-d");
+$time = date("Y-m-d H:i:s");
 
 //$query=$conn->query("INSERT INTO order_detail (id_order,username,tanggal) VALUES('$nextNoOrder','',NOW())");
 	//$update = $conn->query("UPDATE order_user SET status ='Menunggu Verifikasi' ");
